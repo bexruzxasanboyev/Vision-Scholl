@@ -1,0 +1,1467 @@
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vision Scholl</title>
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Gilroy, sans-serif;
+        }
+
+        html,
+        body {
+            overflow-x: hidden;
+        }
+
+        .header-wrap {
+            padding: 10px 10px 51px 10px;
+        }
+
+        .container {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 0 10px;
+        }
+
+        /* ─── Header Bar ─── */
+        .header {
+            width: 100%;
+            height: var(--header-h);
+            background: #4EACFF;
+            border: 1.5px solid var(--blue-border);
+            border-radius: 26px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 20px 15px 14px;
+            position: relative;
+            gap: 0;
+        }
+
+        .logo img {
+            max-width: clamp(115px, 36vw, 130px);
+            width: 100%;
+            height: auto;
+        }
+
+        .header__top {
+            display: flex;
+            align-items: center;
+            gap: 23px;
+        }
+
+        /* ─── Nav ─── */
+        .nav {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: clamp(18px, 3.2vw, 46px);
+            list-style: none;
+        }
+
+        .nav a {
+            font-size: clamp(13px, 1.1vw, 15.5px);
+            font-weight: 700;
+            color: #fff;
+            text-decoration: none;
+            white-space: nowrap;
+            font-weight: 600;
+            font-size: 15px;
+            line-height: 140%;
+            text-align: center;
+            letter-spacing: 0.01em;
+            position: relative;
+            padding-bottom: 2px;
+            transition: opacity 0.2s ease;
+        }
+
+        .nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.912);
+            border-radius: 2px;
+            transition: width 0.25s ease;
+        }
+
+        .text {
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 140%;
+            color: white;
+        }
+
+        .nav a:hover {
+            opacity: 0.85;
+        }
+
+        .nav a:hover::after {
+            width: 100%;
+        }
+
+        /* ─── CTA Button ─── */
+        .btn-aloqa {
+            color: #303030;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            border-radius: 21px;
+            background: linear-gradient(90deg, #2BF88F 0%, #00FF7C 49.04%, #2BF88F 100%);
+            padding: 12px 0 13px 0;
+            max-width: 122px;
+            width: 100%;
+            text-align: center;
+            font-weight: 600;
+            font-size: 15px;
+            line-height: 100%;
+            transition: filter 0.22s ease, transform 0.18s ease;
+        }
+
+        .btn-aloqa:hover {
+            filter: brightness(1.08);
+            transform: translateY(-1px);
+        }
+
+        .btn-aloqa:active {
+            transform: translateY(0);
+            filter: brightness(0.97);
+        }
+
+        /* ─── Hamburger (mobile only) ─── */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+            width: 36px;
+            height: 36px;
+            background: rgba(255, 255, 255, 0.15);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            flex-shrink: 0;
+            margin-left: auto;
+            padding: 6px;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 20px;
+            height: 2.2px;
+            background: #fff;
+            border-radius: 2px;
+            transition: all 0.28s ease;
+            transform-origin: center;
+        }
+
+        /* open state */
+        .hamburger.open span:nth-child(1) {
+            transform: translateY(7.2px) rotate(45deg);
+        }
+
+        .hamburger.open span:nth-child(2) {
+            opacity: 0;
+            transform: scaleX(0);
+        }
+
+        .hamburger.open span:nth-child(3) {
+            transform: translateY(-7.2px) rotate(-45deg);
+        }
+
+        /* ─── Overlay ─── */
+        .navOverlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(7, 24, 43, .45);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity .25s ease;
+            z-index: 999;
+        }
+
+        .navOverlay.is-open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        /* ─── Mobile Drawer ─── */
+        .mobileNav {
+            position: fixed;
+            top: 0;
+            right: 0;
+            height: 100dvh;
+            width: min(320px, 88vw);
+            background: #fff;
+            border-top-left-radius: 22px;
+            border-bottom-left-radius: 22px;
+            box-shadow: -20px 0 50px rgba(0, 0, 0, .18);
+            transform: translateX(110%);
+            transition: transform .28s ease;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            padding: 14px 10px 16px;
+        }
+
+        .mobileNav.is-open {
+            transform: translateX(0);
+        }
+
+        .mobileNav__top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 6px 6px 10px;
+            border-bottom: 1px solid rgba(41, 168, 232, .12);
+            background-color: #4EACFF;
+            border-radius: 20px;
+        }
+
+        .mobileNav__close {
+            width: 40px;
+            height: 40px;
+            border: 0;
+            background: #EEF6FD;
+            border-radius: 12px;
+            color: #29A8E8;
+            display: grid;
+            place-items: center;
+            cursor: pointer;
+            transition: background .15s ease;
+            flex-shrink: 0;
+        }
+
+        .mobileNav__close:hover {
+            background: #daeef9;
+        }
+
+        .mobileNav__list {
+            list-style: none;
+            padding: 12px 4px;
+            display: grid;
+            gap: 8px;
+            overflow: auto;
+        }
+
+        .mobileNav__link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            text-decoration: none;
+            padding: 13px 14px;
+            border-radius: 14px;
+            background: #F0F8FE;
+            color: #1a3a5c;
+            font-weight: 700;
+            font-size: 14px;
+            transition: transform .08s ease, background .15s ease;
+        }
+
+        .mobileNav__link:hover {
+            background: #daeef9;
+        }
+
+        .mobileNav__link:active {
+            transform: scale(.98);
+        }
+
+        .mobileNav__link::after {
+            content: '›';
+            font-size: 18px;
+            color: #29A8E8;
+            font-weight: 400;
+        }
+
+        .mobileNav__bottom {
+            margin-top: auto;
+            padding-top: 10px;
+            display: grid;
+            gap: 10px;
+        }
+
+        .mobileNav__btn {
+            width: 100%;
+            padding: 16px 0;
+            border: none;
+            cursor: pointer;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 15px;
+            color: #fff;
+            background: linear-gradient(90deg, #29A8E8 0%, #3BBEF5 100%);
+            box-shadow: 0 4px 0 #1a85c2;
+            transition: filter .18s ease, transform .15s ease;
+        }
+
+        .mobileNav__btn:hover {
+            filter: brightness(1.07);
+        }
+
+        .mobileNav__btn:active {
+            transform: translateY(2px);
+            box-shadow: 0 2px 0 #1a85c2;
+        }
+
+        .mobileNav__cta {
+            text-decoration: none;
+            text-align: center;
+            padding: 14px 10px;
+            border-radius: 16px;
+            background: rgba(41, 168, 232, .08);
+            color: #1a3a5c;
+            font-weight: 600;
+            font-size: 13px;
+            transition: background .15s ease;
+        }
+
+        .mobileNav__cta:hover {
+            background: rgba(41, 168, 232, .14);
+        }
+
+        body.nav-open {
+            overflow: hidden;
+        }
+
+        /* ══════════════════════════════════
+       HERO SECTION
+        ══════════════════════════════════ */
+        .hero {
+            align-items: center;
+            gap: 40px;
+            padding-bottom: 139px;
+            position: relative;
+        }
+
+        .hero__container {
+            max-width: 1150px;
+            margin: 0 auto;
+            padding: 0 10px;
+        }
+
+        /* ─── LEFT ─── */
+        .hero__left {
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+            position: relative;
+        }
+
+        .hero__title {
+            font-weight: 700;
+            font-size: clamp(22px, 7vw, 42px);
+            line-height: 120%;
+            margin-bottom: 36px;
+        }
+
+        /* ─── FORM CARD ─── */
+        .hero__card {
+            border: 1px solid #02A5FF;
+            max-width: 450px;
+            width: 100%;
+            border-radius: 26px;
+            background-color: #4EACFF;
+            padding: 33px 30px 36px 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 13.5px;
+        }
+
+        .hero__input {
+            width: 100%;
+            padding: 16px 0 15px 26px;
+            border-radius: 14px;
+            border: none;
+            outline: none;
+            background: #fff;
+            font-weight: 600;
+            font-size: 17px;
+            line-height: 160%;
+        }
+
+        .hero__input::placeholder {
+            color: #190E41;
+        }
+
+        .hero__input:focus {
+            box-shadow: 0 0 0 3px rgba(59, 190, 245, .35);
+        }
+
+        .hero__btn {
+            width: 100%;
+            padding: 15px 0 14px 0;
+            border: none;
+            border-radius: 12px;
+            background: linear-gradient(90deg, #2BF88F 0%, #00FF7C 49.04%, #2BF88F 100%);
+            box-shadow: 0px 6px 0px 0px #1AA960;
+            color: #303030;
+            font-weight: 600;
+            font-size: 18px;
+            line-height: 160%;
+            margin-bottom: 8px;
+            cursor: pointer;
+            transition: filter .18s ease, transform .15s ease;
+
+        }
+
+        .hero__btn:hover {
+            filter: brightness(1.06);
+        }
+
+        .hero__btn:active {
+            transform: translateY(3px);
+            box-shadow: 0 1px 0 #1da038;
+        }
+
+        .hero__legal {
+            font-weight: 500;
+            font-size: clamp(8.5px, 2.7vw, 12px);
+            line-height: 120%;
+            text-align: center;
+            color: white;
+        }
+
+        .hero__legal a {
+            text-underline-offset: 2px;
+            color: white;
+        }
+
+        /* ─── RIGHT ─── */
+        .hero__right {
+            position: relative;
+        }
+
+        .hero__right img {
+            object-fit: cover;
+            max-width: clamp(300px, 228vw, 592px);
+            width: 100%;
+            right: 0;
+            top: -500px;
+            z-index: 3;
+            position: absolute;
+            height: auto;
+        }
+
+        .shaddow {
+            box-shadow: 0px 0px 150px 0px #65B6FF80;
+            width: 100%;
+            max-width: clamp(220px, 35vw, 517px);
+            height: clamp(220px, 35vw, 517px);
+            border-radius: 100%;
+            position: absolute;
+            right: 20px;
+            top: -440px;
+        }
+
+        .hero__right-info {
+            max-width: 227px;
+            width: 100%;
+            border-radius: 8px;
+            transform: rotate(-14.5deg);
+            white-space: nowrap;
+            height: 39px;
+            background: linear-gradient(90deg, #2BF88F 0%, #00FF7C 49.04%, #2BF88F 100%);
+            box-shadow: 5.51px 4px 0px 0px #3495EC;
+            padding: 4px 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            right: 0;
+            z-index: 5;
+            bottom: 28px;
+        }
+
+
+        .hero__right-info p {
+            color: #303030;
+            font-weight: 700;
+            font-size: clamp(17px, 5.3vw, 22px);
+            line-height: 100%;
+        }
+
+        .gradinet {
+            background-color: white;
+            width: 592px;
+            height: 258px;
+            filter: blur(50px);
+            position: absolute;
+            top: -75px;
+            z-index: 4;
+            right: 0;
+        }
+
+        @media (max-width: 1024px) {
+            .nav {
+                gap: clamp(12px, 2.5vw, 28px);
+            }
+
+            .btn-aloqa {
+                padding: 10px 22px;
+            }
+
+         
+
+            .gradinet {
+                top: 240px;
+            }
+
+
+            .shaddow {
+                top: 50px;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+        }
+
+
+        @media (max-width:1000px) {
+            .hero__right img {
+                margin: 0 auto;
+                transform: translateX(-50%);
+                left: 50%;
+                top: 0;
+            }
+            
+            .hero__right-info {
+                max-width: 200px;
+                padding: 3px 8px;
+
+            }
+        }
+        @media (max-width: 860px) {
+            .hero {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+
+            .hero__right {
+                min-height: 360px;
+                order: -1;
+            }
+
+            .hero__card {
+                max-width: 100%;
+            }
+            
+        }
+
+        @media (max-width: 480px) {
+
+            .hero__right {
+                min-height: 300px;
+            }
+
+            .header-wrap {
+                padding-bottom: 25px;
+            }
+
+            .hero__left {
+                gap: 5px;
+            }
+
+            .hero__card {
+                padding: 22px 20px 20px 20px;
+            }
+
+            .hero__input {
+                font-size: 16px;
+                padding: 14px 0 14px 20px;
+            }
+
+            .hero__btn {
+                font-size: 17px;
+            }
+        }
+
+
+        @media (max-width: 767px) {
+
+            .nav {
+                display: none;
+            }
+
+            .btn-aloqa.desktop-btn {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .header {
+                border-radius: 28px;
+                padding: 4px 14px;
+            }
+        }
+
+        @media (max-width:400px) {}
+
+        @media (max-width: 360px) {
+            .header__top {
+                gap: 10px;
+            }
+
+            .hero__right-info {
+                max-width: 180px;
+                padding: 3px 5px;
+            }
+        }
+    </style>
+
+    <link rel="stylesheet" href="./css/main.css" media="print" onload="this.media='all'" />
+    <noscript>
+        <link rel="stylesheet" href="./css/main.css" />
+    </noscript>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+</head>
+
+<body>
+    <div class="header-wrap">
+
+        <!-- ══════════ HEADER ══════════ -->
+        <header class="header container">
+
+            <div class="header__top">
+                <a href="#" class="logo">
+                    <img src="./images/logo.avif" width="129" height="37" loading="lazy" decoding="async" alt="logo">
+                </a>
+                <p class="text">innovatsion <br> ingliz tili maktabi</p>
+            </div>
+
+            <!-- Desktop Nav -->
+            <nav>
+                <ul class="nav">
+                    <li><a href="#">Maktab haqida</a></li>
+                    <li><a href="#">Tariflar</a></li>
+                    <li><a href="#reviews">O'quvchilar fikri</a></li>
+                    <li><a href="#result">Natijalar</a></li>
+                </ul>
+            </nav>
+
+            <!-- CTA (desktop) -->
+            <a href="#" class="btn-aloqa desktop-btn">Aloqa</a>
+
+            <!-- Hamburger (mobile) -->
+            <button class="hamburger" id="hamburger" aria-label="Menyu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+        </header>
+
+        <!-- ══════ OVERLAY ══════ -->
+        <div class="navOverlay" id="navOverlay" aria-hidden="true"></div>
+
+        <!-- ══════ MOBILE DRAWER ══════ -->
+        <nav class="mobileNav" id="mobileNav" aria-hidden="true">
+
+            <div class="mobileNav__top">
+                <a href="#" class="mobileNav__brand" style="display: flex; flex-direction: column;">
+                    <img src="./images/logo.avif" width="129" height="37" loading="lazy" decoding="async" alt="logo">
+                </a>
+
+                <button class="mobileNav__close" id="navCloseBtn" type="button" aria-label="Menyuni yopish">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                        <path d="M6 6L18 18M18 6L6 18" stroke="currentColor" stroke-width="2.2"
+                            stroke-linecap="round" />
+                    </svg>
+                </button>
+            </div>
+
+            <ul class="mobileNav__list">
+                <li><a class="mobileNav__link" href="#">Maktab haqida</a></li>
+                <li><a class="mobileNav__link" href="#">Tariflar</a></li>
+                <li><a class="mobileNav__link" href="#reviews">O'quvchilar fikri</a></li>
+                <li><a class="mobileNav__link" href="#result">Natijalar</a></li>
+            </ul>
+
+            <div class="mobileNav__bottom">
+                <button class="mobileNav__btn" type="button">Aloqa</button>
+                <a class="mobileNav__cta" href="tel:+998000000000">Hozir bog'lanish → +998 00 000-00-00</a>
+            </div>
+
+        </nav>
+    </div>
+
+
+    <section class="hero">
+
+        <div class="hero__container">
+            <!-- ══ LEFT ══ -->
+            <div class="hero__left">
+
+                <h1 class="hero__title">
+                    2 oyda IELTS ballingizni eng<br>
+                    kamida 1.0 ga oshiring natija<br>
+                    kafolatlangan
+                </h1>
+
+                <form class="hero__card js-form">
+
+                    <input id="name" class="hero__input" type="text" placeholder="Ismingiz">
+                    <span id="nameError" style="display:none; color:red;">❌ Ismingizni kiriting!</span>
+
+                    <input id="phone" class="hero__input" type="tel" placeholder="+998 99 123-45-67">
+                    <span id="phoneError" style="display:none; color:red;">❌ Telefon raqam mos emas!</span>
+
+                    <button id="submitBtn" class="hero__btn" type="submit">
+                        Ariza qoldirish
+                    </button>
+
+                    <p class="hero__legal">
+                        Tugmani bosish orqali siz
+                        <a href="#">ommaviy offertamizga</a>
+                        rozilik bildirasiz!
+                    </p>
+
+                </form>
+            </div>
+
+            <!-- ══ RIGHT ══ -->
+            <div class="hero__right">
+                <img src="./images/speaker.avif" loading="lazy" decoding="async" width="592" height="651" alt="speaker">
+                <div class="shaddow"></div>
+                <div class="gradinet"></div>
+                <div class="hero__right-info">
+                    <p>Shoxruxbek Olimov</p>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <section class="reviews" id="reviews">
+        <div class="container">
+
+            <h2 class="title">O'quvchilarimiz fikrlari</h2>
+
+            <div class="swiper reviewsSwiper">
+                <div class="swiper-wrapper">
+
+                    <div class="swiper-slide card">
+                        <img src="./images/man.avif">
+                        <div class="play"></div>
+                    </div>
+
+                    <div class="swiper-slide card">
+                        <img src="./images/man.avif">
+                        <div class="play"></div>
+                    </div>
+
+                    <div class="swiper-slide card">
+                        <img src="./images/man.avif">
+                        <div class="play"></div>
+                    </div>
+
+                    <div class="swiper-slide card">
+                        <img src="./images/man.avif">
+                        <div class="play"></div>
+                    </div>
+                    <div class="swiper-slide card">
+                        <img src="./images/man.avif">
+                        <div class="play"></div>
+                    </div>
+                    <div class="swiper-slide card">
+                        <img src="./images/man.avif">
+                        <div class="play"></div>
+                    </div>
+                    <div class="swiper-slide card">
+                        <img src="./images/man.avif">
+                        <div class="play"></div>
+                    </div>
+                </div>
+
+                <!-- arrows -->
+                <div class="reviews-nav">
+                    <button class="btn prev">
+                        <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="32" cy="32" r="32" fill="#21F98B" />
+                            <path d="M34 25L28.6694 31.2191C28.2842 31.6684 28.2842 32.3316 28.6694 32.7809L34 39"
+                                stroke="#383838" stroke-width="4" stroke-linecap="round" />
+                        </svg>
+                    </button>
+                    <button class="btn next">
+                        <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="32" cy="32" r="32" transform="rotate(-180 32 32)" fill="#21F98B" />
+                            <path d="M30 39L35.3306 32.781C35.7158 32.3316 35.7158 31.6684 35.3306 31.2191L30 25"
+                                stroke="#383838" stroke-width="4" stroke-linecap="round" />
+                        </svg>
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <section class="result" id="result">
+        <div class="result__container container">
+            <div class="result__box swiper reviewsSwiper">
+                <div class="result__info">
+                    <h2 class="result__title">O’quvchilarimiz biz bilan 2 oyda <br> qanday natijaga erishishyapti? </h2>
+                    <div class="result__pagaiton reviews-nav">
+                        <div class="result__btn prev">
+                            <svg width="64" height="64" viewBox="0 0 64 64" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="32" cy="32" r="32" fill="#3495EC" />
+                                <path d="M34 25L28.6694 31.2191C28.2842 31.6684 28.2842 32.3316 28.6694 32.7809L34 39"
+                                    stroke="white" stroke-width="4" stroke-linecap="round" />
+                            </svg>
+                        </div>
+                        <div class="result__btn next">
+                            <svg width="64" height="64" viewBox="0 0 64 64" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="32" cy="32" r="32" transform="rotate(-180 32 32)" fill="#3495EC" />
+                                <path d="M30 39L35.3306 32.781C35.7158 32.3316 35.7158 31.6684 35.3306 31.2191L30 25"
+                                    stroke="white" stroke-width="4" stroke-linecap="round" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="result__row swiper-wrapper">
+                    <div class="result__col swiper-slide">
+                        <img src="./images/sertivicat.avif" loading="lazy" decoding="async" width="292" height="448"
+                            alt="sertivicat">
+                        <h3>Muslimaxon Abdumajidova</h3>
+                        <p style="margin-bottom: 10px;">A tochka : Overall 6,5 (Reading 5,5)</p>
+                        <p>B tochka : Overall 8,0 (Reading 9,0)</p>
+                    </div>
+                    <div class="result__col swiper-slide">
+                        <img src="./images/sertivicat.avif" loading="lazy" decoding="async" width="292" height="448"
+                            alt="sertivicat">
+                        <h3>Muslimaxon Abdumajidova</h3>
+                        <p style="margin-bottom: 10px;">A tochka : Overall 6,5 (Reading 5,5)</p>
+                        <p>B tochka : Overall 8,0 (Reading 9,0)</p>
+                    </div>
+                    <div class="result__col swiper-slide">
+                        <img src="./images/sertivicat.avif" loading="lazy" decoding="async" width="292" height="448"
+                            alt="sertivicat">
+                        <h3>Muslimaxon Abdumajidova</h3>
+                        <p style="margin-bottom: 10px;">A tochka : Overall 6,5 (Reading 5,5)</p>
+                        <p>B tochka : Overall 8,0 (Reading 9,0)</p>
+                    </div>
+                    <div class="result__col swiper-slide">
+                        <img src="./images/sertivicat.avif" loading="lazy" decoding="async" width="292" height="448"
+                            alt="sertivicat">
+                        <h3>Muslimaxon Abdumajidova</h3>
+                        <p style="margin-bottom: 10px;">A tochka : Overall 6,5 (Reading 5,5)</p>
+                        <p>B tochka : Overall 8,0 (Reading 9,0)</p>
+                    </div>
+                    <div class="result__col swiper-slide">
+                        <img src="./images/sertivicat.avif" loading="lazy" decoding="async" width="292" height="448"
+                            alt="sertivicat">
+                        <h3>Muslimaxon Abdumajidova</h3>
+                        <p style="margin-bottom: 10px;">A tochka : Overall 6,5 (Reading 5,5)</p>
+                        <p>B tochka : Overall 8,0 (Reading 9,0)</p>
+                    </div>
+                    <div class="result__col swiper-slide">
+                        <img src="./images/sertivicat.avif" loading="lazy" decoding="async" width="292" height="448"
+                            alt="sertivicat">
+                        <h3>Muslimaxon Abdumajidova</h3>
+                        <p style="margin-bottom: 10px;">A tochka : Overall 6,5 (Reading 5,5)</p>
+                        <p>B tochka : Overall 8,0 (Reading 9,0)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="course">
+        <div class="course__container">
+            <div class="course__box mb">
+                <h2 class="course__title">Qaysi kurs sizga mos ?</h2>
+                <p class="course__text">Har bir o‘quvchi bir xil darajada emas. Kimdadir IELTS 5.0 bor, kimdadir esa
+                    <br>
+                    hali bazasi
+                    shakllanmagan. Shuning uchun bizda 2 ta yo‘nalish mavjud:
+                </p>
+
+                <div class="course__row">
+                    <div class="course__col">
+                        <img src="./images/elementary.avif" loading="lazy" decoding="async" width="177" height="159"
+                            alt="elementary">
+                        <div class="course__item">
+                            <h3>Elementary Foundation </h3>
+                            <p>0 dan boshlab mustahkam grammatika, <br> vocabulary va speaking bazasi</p>
+                        </div>
+                    </div>
+                    <div class="course__col">
+                        <img src="./images/ielts-icon.avif" loading="lazy" decoding="async" width="177" height="159"
+                            alt="elementary">
+                        <div class="course__item" style="border: 1px solid #88C7FF; background-color: #EBF5FF;">
+                            <h3>IELTS Vision</h3>
+                            <p>mavjud darajani kamida <br> 1.0 ballga oshirish</p>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="course__btn"> O‘ZIMGA MOS YO‘NALISHNI TANLAYMAN</button>
+            </div>
+
+
+            <div class="course__box">
+                <h2 class="course__title">Nima uchun ko’pchilikda <br> IELTS balli o’smaydi ?</h2>
+                <p class="course__text" style="font-size: clamp(19px, 5vw, 26px);">Ko‘pchilik IELTS’ni emas, bazani
+                    o‘rganishi kerak !</p>
+
+                <div class="growth__info">
+                    <p>IELTS — bu imtihon. Lekin grammar, vocabulary va speaking <br> confidence yetarli bo‘lmasa,
+                        imtihon texnikasi yordam bermaydi.</p>
+                </div>
+
+                <div class="growth__row">
+                    <h3 class="growth__row-title">Agar siz:</h3>
+
+                    <div class="growth__col">
+                        <div class="growth__item">
+                            <div class="">1</div>
+                            <p>Grammar asoslarini <br> yaxshi bilmasangiz</p>
+                        </div>
+                        <div class="growth__item">
+                            <div class="">2</div>
+                            <p>Speaking’da oddiy gap <br> tuzishda qiynalsangiz</p>
+                        </div>
+                        <div class="growth__item">
+                            <div class="">3</div>
+                            <p>IELTS 4.5 ham <br> chiqmayotgan bo‘lsa</p>
+                        </div>
+                        <div class="growth__item">
+                            <div class="">4</div>
+                            <p>Vocabulary kamligi sabab <br> fikr bildira olmasangiz</p>
+                        </div>
+                    </div>
+
+                    <p class="growth__text">Unda sizga avval Elementary <br> Foundation kerak bo‘ladi.</p>
+                </div>
+
+                <button class="course__btn">AVVAL BAZANI MUSTAHKAMLASH</button>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="">
+        <div class="container">
+            <h2 class="course__title" style="margin-bottom: 29px;">Nima uchun ko’pchilikda <br> IELTS balli o’smaydi ?
+            </h2>
+            <div class="growth__info" style="max-width: 250px; width: 100%; padding: 15px 0; border-radius: 18px;">
+                <p> Bu kurs siz uchun, agar:</p>
+            </div>
+
+            <div class="gune">
+                <div class="gune__col">
+                    <img src="./images/icons.avif" loading="lazy" decoding="async" width="44" height="39" alt="icon">
+                    <p>Ingliz tilini boshlang‘ich <br> darajada bilsangiz</p>
+                </div>
+                <div class="gune__col">
+                    <img src="./images/icons.avif" loading="lazy" decoding="async" width="44" height="39" alt="icon">
+                    <p>Speaking’da o‘zingizni <br> erkin his qilmasangiz</p>
+                </div>
+                <div class="gune__col">
+                    <img src="./images/icons.avif" loading="lazy" decoding="async" width="44" height="39" alt="icon">
+                    <p>Grammar <br> chalkash bo‘lsa</p>
+                </div>
+                <div class="gune__col">
+                    <img src="./images/icons.avif" loading="lazy" decoding="async" width="44" height="39" alt="icon">
+                    <p>IELTS boshlashga hali <br> erta deb o‘ylasangiz</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <section class="">
+        <div class="container">
+            <h2 class="course__title mbs">Bu kursda siz
+            </h2>
+
+            <div class="user__row">
+                <div class="user__col">
+                    <div class="user__min">
+                        <img src="./images/box.avif" loading="lazy" decoding="async" width="142" height="128"
+                            alt="images">
+                        <h3>01</h3>
+                    </div>
+                    <div class="user__info">
+                        <p>Ingliz tilining asosiy zamonlarini <br> mukammal o‘rganasiz</p>
+                    </div>
+                </div>
+                <div class="user__col">
+                    <div class="user__min">
+                        <img src="./images/box.avif" loading="lazy" decoding="async" width="142" height="128"
+                            alt="images">
+                        <h3>02</h3>
+                    </div>
+                    <div class="user__info">
+                        <p>1000+ aktiv vocabulary shakllantirasiz</p>
+                    </div>
+                </div>
+                <div class="user__col">
+                    <div class="user__min">
+                        <img src="./images/box.avif" loading="lazy" decoding="async" width="142" height="128"
+                            alt="images">
+                        <h3>03</h3>
+                    </div>
+                    <div class="user__info">
+                        <p>Speaking confidence <br> hosil qilasiz</p>
+                    </div>
+                </div>
+                <div class="user__col">
+                    <div class="user__min">
+                        <img src="./images/box.avif" loading="lazy" decoding="async" width="142" height="128"
+                            alt="images">
+                        <h3>04</h3>
+                    </div>
+                    <div class="user__info">
+                        <p>Listening va reading bazasini mustahkamlaysiz</p>
+                    </div>
+                </div>
+                <div class="user__col right">
+                    <div class="user__min">
+                        <img src="./images/box.avif" loading="lazy" decoding="async" width="142" height="128"
+                            alt="images">
+                        <h3>05</h3>
+                    </div>
+                    <div class="user__info">
+                        <p>IELTS boshlash uchun <br> tayyor darajaga chiqasiz</p>
+                    </div>
+                </div>
+            </div>
+
+            <p class="growth__text">Natija: 3–4 oy ichida IELTS Vision <br> kursiga tayyor bo‘lasiz.</p>
+            <button class="course__btn" style="margin-bottom: 136px;">AVVAL BAZANI MUSTAHKAMLASH</button>
+        </div>
+    </section>
+
+
+    <section class="">
+        <div class="container">
+            <h2 class="course__title mbs">IELTS vision qanday kurs ?
+            </h2>
+
+            <div class="user__box">
+                <div class="user__cols">
+                    <div class="user__min">
+                        <img src="./images/1.avif" loading="lazy" decoding="async" width="142" height="128"
+                            alt="images">
+                    </div>
+                    <div class="user__infos">
+                        <p>Sizning hozirgi natijangiz IELTS 4.5 bo‘lishi ham <br> mumkin, yoki 7.0 — farqi yo‘q</p>
+                    </div>
+                </div>
+                <div class="user__cols">
+                    <div class="user__min">
+                        <img src="./images/2.avif" loading="lazy" decoding="async" width="142" height="128"
+                            alt="images">
+                    </div>
+                    <div class="user__infos" style="border: 1px solid #52E397; background-color: #EBFFEC;">
+                        <p>Shoxruxbek Olimov tomonidan ishlab chiqilgan ushbu universal <br> kurs sizga ballingizni
+                            kamida 1.0 ga oshirishga mo‘ljallangan.</p>
+                    </div>
+                </div>
+                <div class="user__cols">
+                    <div class="user__min">
+                        <img src="./images/3.avif" loading="lazy" decoding="async" width="142" height="128"
+                            alt="images">
+                    </div>
+                    <div class="user__infos">
+                        <p>Har bir qatnashchiga individual yondashuv, aniq tizim va <br> natijaga olib boradigan yo‘l
+                            xaritasi taqdim etiladi.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="courses">
+        <div class="course__container">
+
+            <h2 class="course__title mbs">
+                Bu kurs siz uchun, agarda:
+            </h2>
+
+            <!-- Top list -->
+            <div class="course__list course__list--top">
+
+                <div class="course__items">
+                    <div class="course__number">1</div>
+                    <p class="course__texts">
+                        Kursdan kursga o‘tib natijaga erisholmayotgan bo‘lsangiz
+                    </p>
+                </div>
+
+                <div class="course__items" style="border: 0.8px solid #88C7FF; background-color: #EBF5FF;">
+                    <div class="course__number" style="background-color: #4FACFF;">2</div>
+                    <p class="course__texts">
+                        2 oy ichida IELTSni yopib <br> chiqmoqchi bo‘lsangiz
+                    </p>
+                </div>
+
+                <div class="course__items">
+                    <div class="course__number">3</div>
+                    <p class="course__texts">
+                        Mock test topshiryapsiz, lekin <br> natijangiz o‘zgarmayotgan bo‘lsa
+                    </p>
+                </div>
+
+            </div>
+
+            <!-- Arrows 1 -->
+            <div class="course__arrows">
+                <img class="course__arrow" src="./images/arrow.avif" alt="arrow">
+                <img class="course__arrow" src="./images/arrow.avif" alt="arrow">
+            </div>
+
+            <!-- Bottom list -->
+            <div class="course__list course__list--bottom">
+
+                <div class="course__items" style="border: 0.8px solid #88C7FF; background-color: #EBF5FF;">
+                    <div class="course__number" style="background-color: #4FACFF;">4</div>
+                    <p class="course__texts">
+                        Speaking va Writing’dan <br> qiynalayotgan bo‘lsangiz
+                    </p>
+                </div>
+
+                <div class="course__items" style="border: 0.8px solid #88C7FF; background-color: #EBF5FF;">
+                    <div class="course__number" style="background-color: #4FACFF;">5</div>
+                    <p class="course__texts" style="font-size: 16px;">
+                        Ustoz nazoratida shaxsiy roadmap <br> bilan ishlamoqchi bo‘lsangiz
+                    </p>
+                </div>
+
+                <button class="course__btn" style="margin-top: -10px; max-width: 316px;">KURSGA YOZILISH</button>
+            </div>
+
+            <!-- Arrows 2 -->
+            <div class="course__arrows course__arrows--bottom">
+                <img class="course__arrow" src="./images/arrow.avif" alt="arrow">
+                <img class="course__arrow" src="./images/arrow2.avif" alt="arrow">
+            </div>
+
+        </div>
+    </section>
+
+    <section class="course">
+        <div class="container">
+
+            <h2 class="course__title mbs">
+                Bu kursda siz
+            </h2>
+
+            <div class="course__stats">
+
+                <div class="course__stat">
+                    <div class="course__stat-number">
+                        <img src="./images/tip.avif" loading="lazy" decoding="async" width="120" height="117"
+                            alt="icon">
+                        <p>40</p>
+                    </div>
+                    <p class="course__stat-text">
+                        40 ta kuchli <br> videodarsliklar
+                    </p>
+                </div>
+                <div class="course__stat">
+                    <div class="course__stat-number">
+                        <img src="./images/tip.avif" loading="lazy" decoding="async" width="120" height="117"
+                            alt="icon">
+                        <p>24</p>
+                    </div>
+                    <p class="course__stat-text">
+                        24 ta online <br> jonli darslar
+                    </p>
+                </div>
+                <div class="course__stat">
+                    <div class="course__stat-number">
+                        <img src="./images/tip.avif" loading="lazy" decoding="async" width="120" height="117"
+                            alt="icon">
+                        <p>3</p>
+                    </div>
+                    <p class="course__stat-text">
+                        3 ta Mock testi topshirish <br> imkoniyatlariga ega bo’lasiz
+                    </p>
+                </div>
+
+            </div>
+
+            <p class="growth__text">Kuchli nazorat ostida IELTS darajangizni kamida 1.0 balga <br> ko‘tara olishingizga
+                kafolat beramiz.</p>
+
+            <button class="course__btn course__btn--primary">
+                KURSDA O‘QIMOQCHIMAN
+            </button>
+
+        </div>
+    </section>
+
+
+    <section class="why">
+        <div class="container">
+            <h2 class="course__title">Nima uchun IELTS Visionda <br> o’qishingiz kerak ?</h2>
+
+            <div class="why__row">
+                <div class="course__items" style="padding: 35px 0 ;">
+                    <div class="course__number" style="margin-right: 245px; margin-top: -35px;">1</div>
+                    <p class="course__texts" style="text-align: start;">
+                        IELTS 8.5 ballga ega shaxsan <br> Shoxrux Olimovdan dars olish
+                    </p>
+                </div>
+                <div class="course__items"
+                    style="padding: 35px 0 ; border: 0.8px solid #88C7FF; background-color: #EBF5FF;">
+                    <div class="course__number"
+                        style="margin-right: 245px; margin-top: -35px; background-color: #4FACFF;">2</div>
+                    <p class="course__texts" style="text-align: start;">
+                        10.000+ o‘quvchilar ishonch <br> bildirgan sinalgan tizim
+                    </p>
+                </div>
+                <div class="course__items"
+                    style="padding: 35px 0 ; border: 0.8px solid #88C7FF; background-color: #EBF5FF;">
+                    <div class="course__number"
+                        style="margin-right: 245px; margin-top: -35px; background-color: #4FACFF;">3</div>
+                    <p class="course__texts" style="text-align: start;">
+                        Kuchli nazorat: vazifa <br> topshirmasa, kursdan chetlatiladi
+                    </p>
+                </div>
+                <div class="course__items" style="padding: 35px 0 ;">
+                    <div class="course__number" style="margin-right: 245px; margin-top: -35px;">4</div>
+                    <p class="course__texts" style="text-align: start;">
+                         Feedback va roadmap <br> asosidagi individual yondashuv
+                    </p>
+                </div>
+            </div>
+
+            <button class="course__btn course__btn--primary" style="max-width: 316px;">
+                RO‘YXATDAN O‘TISH
+            </button>
+        </div>
+    </section>
+
+
+    <section class="teacher">
+        <div class="container">
+            <h2 class="course__title mbs">Kurs muallifi Shoxrux Olimov</h2>
+
+            <div class="teacher__box">
+                <img class="teacher__images" src="./images/speakerSecond.avif" loading="lazy" decoding="async"
+                    width="365" height="331" alt="speaker">
+
+
+                <ul class="teacher__nav">
+                    <li>7 yillik o’qitish tajribasi</li>
+                    <li>CELTA sertifikati sohibi</li>
+                    <li>130K+ ijtimoiy tarmoqdagi obunachilar</li>
+                    <li>IELTS 8.5 / SAT 1490</li>
+                    <li>O‘z metodikasiga ega, shaxsiy yondashuv</li>
+                </ul>
+            </div>
+
+            <div class="teacher__bg">
+                <img class="teacher__img1" src="./images/bg.avif" loading="lazy" decoding="async" width="300"
+                    height="300" alt="bg">
+                <img class="teacher__img" src="./images/bg.avif" loading="lazy" decoding="async" width="300"
+                    height="300" alt="bg">
+            </div>
+
+            <button class="course__btn course__btn--primary" style="max-width: 316px; margin-top: 51px;">
+                KURSGA YOZILMOQCHIMAN
+            </button>
+        </div>
+    </section>
+
+
+    <section class="cta">
+        <div class="cta__container">
+
+            <!-- Dashed arrow -->
+            <img class="cta__arrow" src="./images/arrow3.avif" loading="lazy" decoding="async" width="503" height="49" alt="arrow">
+
+            <!-- Left -->
+            <div class="cta__left">
+                <h2 class="cta__title">Hali ham savollaringiz qoldimi?</h2>
+                <p class="cta__text">Formani to'ldiring va Telegram admin <br> orqali barcha savollaringizga javob oling.</p>
+            </div>
+
+            <!-- Right card -->
+            <form class="hero__card js-form">
+
+                <input id="name" class="hero__input" type="text" placeholder="Ismingiz">
+                <span id="nameError" style="display:none; color:red;">❌ Ismingizni kiriting!</span>
+
+                <input id="phone" class="hero__input" type="tel" placeholder="+998 99 123-45-67">
+                <span id="phoneError" style="display:none; color:red;">❌ Telefon raqam mos emas!</span>
+
+                <button id="submitBtn" class="hero__btn" type="submit">
+                    Ariza qoldirish
+                </button>
+
+                <p class="hero__legal">
+                    Tugmani bosish orqali siz
+                    <a href="#">ommaviy offertamizga</a>
+                    rozilik bildirasiz!
+                </p>
+
+            </form>
+        </div>
+    </section>
+
+    <section class="faq">
+        <div class="faq__container">
+            <h2 class="course__title">Eng ko'p beriladigan savollar</h2>
+
+            <div class="faq__list">
+
+                <div class="faq__item">
+                    <button class="faq__question">
+                        <span>Qanday darajada bo'lishim kerak?</span>
+                        <div class="faq__icon">
+                            <svg viewBox="0 0 24 24">
+                                <polyline points="6 9 12 15 18 9" />
+                            </svg>
+                        </div>
+                    </button>
+                    <div class="faq__answer">
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis porro molestias magnam
+                            odio. Quia dolor fuga ducimus iusto nesciunt cum architecto. Expedita minima cupiditate quod
+                            architecto, exercitationem quaerat nulla minus.</p>
+                    </div>
+                </div>
+
+                <div class="faq__item">
+                    <button class="faq__question">
+                        <span>Elementary qachon tanlanadi?</span>
+                        <div class="faq__icon">
+                            <svg viewBox="0 0 24 24">
+                                <polyline points="6 9 12 15 18 9" />
+                            </svg>
+                        </div>
+                    </button>
+                    <div class="faq__answer">
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis porro molestias magnam
+                            odio. Quia dolor fuga ducimus iusto nesciunt cum architecto. Expedita minima cupiditate quod
+                            architecto, exercitationem quaerat nulla minus.</p>
+
+                    </div>
+                </div>
+
+                <div class="faq__item">
+                    <button class="faq__question">
+                        <span>IELTS'ga qachon o'tish mumkin?</span>
+                        <div class="faq__icon">
+                            <svg viewBox="0 0 24 24">
+                                <polyline points="6 9 12 15 18 9" />
+                            </svg>
+                        </div>
+                    </button>
+                    <div class="faq__answer">
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis porro molestias magnam
+                            odio. Quia dolor fuga ducimus iusto nesciunt cum architecto. Expedita minima cupiditate quod
+                            architecto, exercitationem quaerat nulla minus.</p>
+
+                    </div>
+                </div>
+
+                <div class="faq__item">
+                    <button class="faq__question">
+                        <span>Kurs qancha davom etadi?</span>
+                        <div class="faq__icon">
+                            <svg viewBox="0 0 24 24">
+                                <polyline points="6 9 12 15 18 9" />
+                            </svg>
+                        </div>
+                    </button>
+                    <div class="faq__answer">
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis porro molestias magnam
+                            odio. Quia dolor fuga ducimus iusto nesciunt cum architecto. Expedita minima cupiditate quod
+                            architecto, exercitationem quaerat nulla minus.</p>
+
+                    </div>
+                </div>
+
+                <div class="faq__item">
+                    <button class="faq__question">
+                        <span>Haftasiga necha soat ajratish kerak?</span>
+                        <div class="faq__icon">
+                            <svg viewBox="0 0 24 24">
+                                <polyline points="6 9 12 15 18 9" />
+                            </svg>
+                        </div>
+                    </button>
+                    <div class="faq__answer">
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis porro molestias magnam
+                            odio. Quia dolor fuga ducimus iusto nesciunt cum architecto. Expedita minima cupiditate quod
+                            architecto, exercitationem quaerat nulla minus.</p>
+
+                    </div>
+                </div>
+
+                <div class="faq__item">
+                    <button class="faq__question">
+                        <span>Darsni Shoxrux Olimovni o'zi o'tadimi?</span>
+                        <div class="faq__icon">
+                            <svg viewBox="0 0 24 24">
+                                <polyline points="6 9 12 15 18 9" />
+                            </svg>
+                        </div>
+                    </button>
+                    <div class="faq__answer">
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis porro molestias magnam
+                            odio. Quia dolor fuga ducimus iusto nesciunt cum architecto. Expedita minima cupiditate quod
+                            architecto, exercitationem quaerat nulla minus.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer__container">
+            <div class="header__top">
+                <a href="#" class="logo">
+                    <img src="./images/logo.avif" width="129" height="37" loading="lazy" decoding="async" alt="logo">
+                </a>
+                <p class="text">innovatsion <br> ingliz tili maktabi</p>
+            </div>
+
+
+            <div class="footer__links">
+                <a href="#">Ommaviy offerta</a>
+                <a href="#">Vision school – 2026</a>
+            </div>
+        </div>
+    </footer>
+    <script defer>
+        const hamburger = document.querySelector(".hamburger"), mobileNav = document.getElementById("mobileNav"), navOverlay = document.getElementById("navOverlay"), navCloseBtn = document.getElementById("navCloseBtn"), openNav = () => { mobileNav.classList.add("is-open"), navOverlay.classList.add("is-open"), document.body.classList.add("nav-open"), mobileNav.setAttribute("aria-hidden", "false"), navOverlay.setAttribute("aria-hidden", "false") }, closeNav = () => { mobileNav.classList.remove("is-open"), navOverlay.classList.remove("is-open"), document.body.classList.remove("nav-open"), mobileNav.setAttribute("aria-hidden", "true"), navOverlay.setAttribute("aria-hidden", "true") }; hamburger.addEventListener("click", openNav), navCloseBtn.addEventListener("click", closeNav), navOverlay.addEventListener("click", closeNav), mobileNav.querySelectorAll(".mobileNav__link").forEach((e => e.addEventListener("click", closeNav))), document.addEventListener("keydown", (e => { "Escape" === e.key && closeNav() }));
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script defer src="./js/phoneFormatter.js"></script>
+    <script defer src="./js/app.js"></script>
+</body>
+
+</html>
