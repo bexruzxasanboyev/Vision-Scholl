@@ -98,3 +98,17 @@ document.querySelectorAll('.faq__question').forEach(btn => {
         if (!isOpen) item.classList.add('open');
     });
 });
+
+const total = 5;
+let current = 1;
+const numEl = document.getElementById('slideNum');
+
+document.getElementById('prevBtn').addEventListener('click', () => {
+    current = current > 1 ? current - 1 : total;
+    numEl.textContent = `${current} / ${total}`;
+});
+
+document.getElementById('nextBtn').addEventListener('click', () => {
+    current = current < total ? current + 1 : 1;
+    numEl.textContent = `${current} / ${total}`;
+});

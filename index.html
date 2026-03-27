@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vision Scholl</title>
     <style>
-        *,
+       *,
         *::before,
         *::after {
             box-sizing: border-box;
@@ -28,14 +28,14 @@
         }
 
         .container {
-            max-width: 1240px;
+            max-width: 1240px !important;
             margin: 0 auto;
             padding: 0 10px;
         }
 
         /* ─── Header Bar ─── */
         .header {
-            width: 100%;
+            width: 100% !important;
             height: var(--header-h);
             background: #4EACFF;
             border: 1.5px solid var(--blue-border);
@@ -43,7 +43,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 15px 20px 15px 14px;
+            padding: 15px 20px 15px 14px !important;
             position: relative;
             gap: 0;
         }
@@ -516,7 +516,7 @@
                 padding: 10px 22px;
             }
 
-         
+
 
             .gradinet {
                 top: 240px;
@@ -539,13 +539,14 @@
                 left: 50%;
                 top: 0;
             }
-            
+
             .hero__right-info {
                 max-width: 200px;
                 padding: 3px 8px;
 
             }
         }
+
         @media (max-width: 860px) {
             .hero {
                 grid-template-columns: 1fr;
@@ -560,7 +561,7 @@
             .hero__card {
                 max-width: 100%;
             }
-            
+
         }
 
         @media (max-width: 480px) {
@@ -681,8 +682,7 @@
 
                 <button class="mobileNav__close" id="navCloseBtn" type="button" aria-label="Menyuni yopish">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-                        <path d="M6 6L18 18M18 6L6 18" stroke="currentColor" stroke-width="2.2"
-                            stroke-linecap="round" />
+                        <path d="M6 6L18 18M18 6L6 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"></path>
                     </svg>
                 </button>
             </div>
@@ -1293,16 +1293,101 @@
     </section>
 
 
+
+    <!-- ══ WORK ══ -->
+    <section class="work">
+        <div class="container">
+            <h2 class="work__title">Kurs modullari bilan tanishing</h2>
+
+            <div class="work__box">
+                <div class="work__slider">
+                    <button class="work__nav" id="prevBtn" aria-label="Oldingi">
+                        <svg viewBox="0 0 24 24">
+                            <polyline points="15 18 9 12 15 6" />
+                        </svg>
+                    </button>
+
+                    <div class="work__slide-wrap">
+                        <div class="work__slide">
+                            <span class="work__slide-num" id="slideNum">1 / 5</span>
+                        </div>
+                    </div>
+
+                    <button class="work__nav" id="nextBtn" aria-label="Keyingi">
+                        <svg viewBox="0 0 24 24">
+                            <polyline points="9 18 15 12 9 6" />
+                        </svg>
+                    </button>
+                </div>
+
+                <button class="work__btn">KURSGA YOZILISH</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ PRICE ══ -->
+    <section class="price">
+        <div class="container">
+            <h2 class="price__title">Kurs narxlari</h2>
+
+            <div class="price__list">
+
+                <!-- Card 1 — Elementary -->
+                <div class="price__card">
+                    <img src="./images/elementary.avif" alt="Elementary" class="main-img" loading="lazy"
+                        decoding="async">
+                    <div class="price__info price__info--green">
+                        <h3>Elementary Foundation</h3>
+                        <p>Bazani 0 dan mustahkamlashni <br> istaganlar uchun</p>
+                        <button class="price__cta">ELEMENTARYDA O‘QIMOQCHIMAN</button>
+                    </div>
+                </div>
+
+                <!-- Card 2 — IELTS Nazoratsiz -->
+                <div class="price__card">
+                    <img src="./images/ielts-icon.avif" alt="IELTS Nazoratsiz" class="main-img" loading="lazy"
+                        decoding="async">
+                    <div class="price__info price__info--blue">
+                        <h3>IELTS Vision — Nazoratsiz</h3>
+                        <p>O'z tezligida o'rganishni istaganlar uchun</p>
+                        <button class="price__cta">NAZORATSIZ O‘RGANMOQCHIMAN</button>
+                    </div>
+                </div>
+
+                <!-- Card 3 — IELTS Nazoratli (star badge) -->
+                <div class="price__card">
+                    <div class="price__badge">
+                        <img src="./images/start.avif" width="48" height="48" decoding="async" alt="star"
+                            loading="lazy">
+                    </div>
+                    <img src="./images/ielts-icon.avif" alt="IELTS Nazoratsiz" class="main-img" loading="lazy"
+                        decoding="async">
+                    <div class="price__info price__info--blue">
+                        <div class="price__info-badge">
+                            <img src="./images/star.svg" alt="star" decoding="async" loading="lazy">
+                        </div>
+                        <h3>IELTS Vision — Nazoratli</h3>
+                        <p>Kuniga 4–5 soat ajratishga va ustoz <br> nazoratida tez natija olishga tayyorlar uchun</p>
+                        <button class="price__cta">USTOZ NAZORATIDA O‘QIMOQCHIMAN</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
     <section class="cta">
         <div class="cta__container">
 
             <!-- Dashed arrow -->
-            <img class="cta__arrow" src="./images/arrow3.avif" loading="lazy" decoding="async" width="503" height="49" alt="arrow">
+            <img class="cta__arrow" src="./images/arrow3.avif" loading="lazy" decoding="async" width="503" height="49"
+                alt="arrow">
 
             <!-- Left -->
             <div class="cta__left">
                 <h2 class="cta__title">Hali ham savollaringiz qoldimi?</h2>
-                <p class="cta__text">Formani to'ldiring va Telegram admin <br> orqali barcha savollaringizga javob oling.</p>
+                <p class="cta__text">Formani to'ldiring va Telegram admin <br> orqali barcha savollaringizga javob
+                    oling.</p>
             </div>
 
             <!-- Right card -->
