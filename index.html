@@ -6,630 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vision Scholl</title>
     <style>
-       *,
-        *::before,
-        *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: Gilroy, sans-serif;
-        }
-
-        html,
-        body {
-            overflow-x: hidden;
-        }
-
-        .header-wrap {
-            padding: 10px 10px 51px 10px;
-        }
-
-        .container {
-            max-width: 1240px !important;
-            margin: 0 auto;
-            padding: 0 10px;
-        }
-
-        /* ─── Header Bar ─── */
-        .header {
-            width: 100% !important;
-            height: var(--header-h);
-            background: #4EACFF;
-            border: 1.5px solid var(--blue-border);
-            border-radius: 26px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 15px 20px 15px 14px !important;
-            position: relative;
-            gap: 0;
-        }
-
-        .logo img {
-            max-width: clamp(115px, 36vw, 130px);
-            width: 100%;
-            height: auto;
-        }
-
-        .header__top {
-            display: flex;
-            align-items: center;
-            gap: 23px;
-        }
-
-        /* ─── Nav ─── */
-        .nav {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: clamp(18px, 3.2vw, 46px);
-            list-style: none;
-        }
-
-        .nav a {
-            font-size: clamp(13px, 1.1vw, 15.5px);
-            font-weight: 700;
-            color: #fff;
-            text-decoration: none;
-            white-space: nowrap;
-            font-weight: 600;
-            font-size: 15px;
-            line-height: 140%;
-            text-align: center;
-            letter-spacing: 0.01em;
-            position: relative;
-            padding-bottom: 2px;
-            transition: opacity 0.2s ease;
-        }
-
-        .nav a::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: rgba(255, 255, 255, 0.912);
-            border-radius: 2px;
-            transition: width 0.25s ease;
-        }
-
-        .text {
-            font-weight: 400;
-            font-size: 14px;
-            line-height: 140%;
-            color: white;
-        }
-
-        .nav a:hover {
-            opacity: 0.85;
-        }
-
-        .nav a:hover::after {
-            width: 100%;
-        }
-
-        /* ─── CTA Button ─── */
-        .btn-aloqa {
-            color: #303030;
-            text-decoration: none;
-            border: none;
-            cursor: pointer;
-            border-radius: 21px;
-            background: linear-gradient(90deg, #2BF88F 0%, #00FF7C 49.04%, #2BF88F 100%);
-            padding: 12px 0 13px 0;
-            max-width: 122px;
-            width: 100%;
-            text-align: center;
-            font-weight: 600;
-            font-size: 15px;
-            line-height: 100%;
-            transition: filter 0.22s ease, transform 0.18s ease;
-        }
-
-        .btn-aloqa:hover {
-            filter: brightness(1.08);
-            transform: translateY(-1px);
-        }
-
-        .btn-aloqa:active {
-            transform: translateY(0);
-            filter: brightness(0.97);
-        }
-
-        /* ─── Hamburger (mobile only) ─── */
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            gap: 5px;
-            width: 36px;
-            height: 36px;
-            background: rgba(255, 255, 255, 0.15);
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            flex-shrink: 0;
-            margin-left: auto;
-            padding: 6px;
-        }
-
-        .hamburger span {
-            display: block;
-            width: 20px;
-            height: 2.2px;
-            background: #fff;
-            border-radius: 2px;
-            transition: all 0.28s ease;
-            transform-origin: center;
-        }
-
-        /* open state */
-        .hamburger.open span:nth-child(1) {
-            transform: translateY(7.2px) rotate(45deg);
-        }
-
-        .hamburger.open span:nth-child(2) {
-            opacity: 0;
-            transform: scaleX(0);
-        }
-
-        .hamburger.open span:nth-child(3) {
-            transform: translateY(-7.2px) rotate(-45deg);
-        }
-
-        /* ─── Overlay ─── */
-        .navOverlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(7, 24, 43, .45);
-            backdrop-filter: blur(6px);
-            -webkit-backdrop-filter: blur(6px);
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity .25s ease;
-            z-index: 999;
-        }
-
-        .navOverlay.is-open {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        /* ─── Mobile Drawer ─── */
-        .mobileNav {
-            position: fixed;
-            top: 0;
-            right: 0;
-            height: 100dvh;
-            width: min(320px, 88vw);
-            background: #fff;
-            border-top-left-radius: 22px;
-            border-bottom-left-radius: 22px;
-            box-shadow: -20px 0 50px rgba(0, 0, 0, .18);
-            transform: translateX(110%);
-            transition: transform .28s ease;
-            z-index: 1000;
-            display: flex;
-            flex-direction: column;
-            padding: 14px 10px 16px;
-        }
-
-        .mobileNav.is-open {
-            transform: translateX(0);
-        }
-
-        .mobileNav__top {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 6px 6px 10px;
-            border-bottom: 1px solid rgba(41, 168, 232, .12);
-            background-color: #4EACFF;
-            border-radius: 20px;
-        }
-
-        .mobileNav__close {
-            width: 40px;
-            height: 40px;
-            border: 0;
-            background: #EEF6FD;
-            border-radius: 12px;
-            color: #29A8E8;
-            display: grid;
-            place-items: center;
-            cursor: pointer;
-            transition: background .15s ease;
-            flex-shrink: 0;
-        }
-
-        .mobileNav__close:hover {
-            background: #daeef9;
-        }
-
-        .mobileNav__list {
-            list-style: none;
-            padding: 12px 4px;
-            display: grid;
-            gap: 8px;
-            overflow: auto;
-        }
-
-        .mobileNav__link {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            text-decoration: none;
-            padding: 13px 14px;
-            border-radius: 14px;
-            background: #F0F8FE;
-            color: #1a3a5c;
-            font-weight: 700;
-            font-size: 14px;
-            transition: transform .08s ease, background .15s ease;
-        }
-
-        .mobileNav__link:hover {
-            background: #daeef9;
-        }
-
-        .mobileNav__link:active {
-            transform: scale(.98);
-        }
-
-        .mobileNav__link::after {
-            content: '›';
-            font-size: 18px;
-            color: #29A8E8;
-            font-weight: 400;
-        }
-
-        .mobileNav__bottom {
-            margin-top: auto;
-            padding-top: 10px;
-            display: grid;
-            gap: 10px;
-        }
-
-        .mobileNav__btn {
-            width: 100%;
-            padding: 16px 0;
-            border: none;
-            cursor: pointer;
-            border-radius: 50px;
-            font-weight: 800;
-            font-size: 15px;
-            color: #fff;
-            background: linear-gradient(90deg, #29A8E8 0%, #3BBEF5 100%);
-            box-shadow: 0 4px 0 #1a85c2;
-            transition: filter .18s ease, transform .15s ease;
-        }
-
-        .mobileNav__btn:hover {
-            filter: brightness(1.07);
-        }
-
-        .mobileNav__btn:active {
-            transform: translateY(2px);
-            box-shadow: 0 2px 0 #1a85c2;
-        }
-
-        .mobileNav__cta {
-            text-decoration: none;
-            text-align: center;
-            padding: 14px 10px;
-            border-radius: 16px;
-            background: rgba(41, 168, 232, .08);
-            color: #1a3a5c;
-            font-weight: 600;
-            font-size: 13px;
-            transition: background .15s ease;
-        }
-
-        .mobileNav__cta:hover {
-            background: rgba(41, 168, 232, .14);
-        }
-
-        body.nav-open {
-            overflow: hidden;
-        }
-
-        /* ══════════════════════════════════
-       HERO SECTION
-        ══════════════════════════════════ */
-        .hero {
-            align-items: center;
-            gap: 40px;
-            padding-bottom: 139px;
-            position: relative;
-        }
-
-        .hero__container {
-            max-width: 1150px;
-            margin: 0 auto;
-            padding: 0 10px;
-        }
-
-        /* ─── LEFT ─── */
-        .hero__left {
-            display: flex;
-            flex-direction: column;
-            gap: 28px;
-            position: relative;
-        }
-
-        .hero__title {
-            font-weight: 700;
-            font-size: clamp(22px, 7vw, 42px);
-            line-height: 120%;
-            margin-bottom: 36px;
-        }
-
-        /* ─── FORM CARD ─── */
-        .hero__card {
-            border: 1px solid #02A5FF;
-            max-width: 450px;
-            width: 100%;
-            border-radius: 26px;
-            background-color: #4EACFF;
-            padding: 33px 30px 36px 30px;
-            display: flex;
-            flex-direction: column;
-            gap: 13.5px;
-        }
-
-        .hero__input {
-            width: 100%;
-            padding: 16px 0 15px 26px;
-            border-radius: 14px;
-            border: none;
-            outline: none;
-            background: #fff;
-            font-weight: 600;
-            font-size: 17px;
-            line-height: 160%;
-        }
-
-        .hero__input::placeholder {
-            color: #190E41;
-        }
-
-        .hero__input:focus {
-            box-shadow: 0 0 0 3px rgba(59, 190, 245, .35);
-        }
-
-        .hero__btn {
-            width: 100%;
-            padding: 15px 0 14px 0;
-            border: none;
-            border-radius: 12px;
-            background: linear-gradient(90deg, #2BF88F 0%, #00FF7C 49.04%, #2BF88F 100%);
-            box-shadow: 0px 6px 0px 0px #1AA960;
-            color: #303030;
-            font-weight: 600;
-            font-size: 18px;
-            line-height: 160%;
-            margin-bottom: 8px;
-            cursor: pointer;
-            transition: filter .18s ease, transform .15s ease;
-
-        }
-
-        .hero__btn:hover {
-            filter: brightness(1.06);
-        }
-
-        .hero__btn:active {
-            transform: translateY(3px);
-            box-shadow: 0 1px 0 #1da038;
-        }
-
-        .hero__legal {
-            font-weight: 500;
-            font-size: clamp(8.5px, 2.7vw, 12px);
-            line-height: 120%;
-            text-align: center;
-            color: white;
-        }
-
-        .hero__legal a {
-            text-underline-offset: 2px;
-            color: white;
-        }
-
-        /* ─── RIGHT ─── */
-        .hero__right {
-            position: relative;
-        }
-
-        .hero__right img {
-            object-fit: cover;
-            max-width: clamp(300px, 228vw, 592px);
-            width: 100%;
-            right: 0;
-            top: -500px;
-            z-index: 3;
-            position: absolute;
-            height: auto;
-        }
-
-        .shaddow {
-            box-shadow: 0px 0px 150px 0px #65B6FF80;
-            width: 100%;
-            max-width: clamp(220px, 35vw, 517px);
-            height: clamp(220px, 35vw, 517px);
-            border-radius: 100%;
-            position: absolute;
-            right: 20px;
-            top: -440px;
-        }
-
-        .hero__right-info {
-            max-width: 227px;
-            width: 100%;
-            border-radius: 8px;
-            transform: rotate(-14.5deg);
-            white-space: nowrap;
-            height: 39px;
-            background: linear-gradient(90deg, #2BF88F 0%, #00FF7C 49.04%, #2BF88F 100%);
-            box-shadow: 5.51px 4px 0px 0px #3495EC;
-            padding: 4px 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: absolute;
-            right: 0;
-            z-index: 5;
-            bottom: 28px;
-        }
-
-
-        .hero__right-info p {
-            color: #303030;
-            font-weight: 700;
-            font-size: clamp(17px, 5.3vw, 22px);
-            line-height: 100%;
-        }
-
-        .gradinet {
-            background-color: white;
-            width: 592px;
-            height: 258px;
-            filter: blur(50px);
-            position: absolute;
-            top: -75px;
-            z-index: 4;
-            right: 0;
-        }
-
-        @media (max-width: 1024px) {
-            .nav {
-                gap: clamp(12px, 2.5vw, 28px);
-            }
-
-            .btn-aloqa {
-                padding: 10px 22px;
-            }
-
-
-
-            .gradinet {
-                top: 240px;
-            }
-
-
-            .shaddow {
-                top: 50px;
-                left: 50%;
-                transform: translateX(-50%);
-            }
-
-        }
-
-
-        @media (max-width:1000px) {
-            .hero__right img {
-                margin: 0 auto;
-                transform: translateX(-50%);
-                left: 50%;
-                top: 0;
-            }
-
-            .hero__right-info {
-                max-width: 200px;
-                padding: 3px 8px;
-
-            }
-        }
-
-        @media (max-width: 860px) {
-            .hero {
-                grid-template-columns: 1fr;
-                gap: 48px;
-            }
-
-            .hero__right {
-                min-height: 360px;
-                order: -1;
-            }
-
-            .hero__card {
-                max-width: 100%;
-            }
-
-        }
-
-        @media (max-width: 480px) {
-
-            .hero__right {
-                min-height: 300px;
-            }
-
-            .header-wrap {
-                padding-bottom: 25px;
-            }
-
-            .hero__left {
-                gap: 5px;
-            }
-
-            .hero__card {
-                padding: 22px 20px 20px 20px;
-            }
-
-            .hero__input {
-                font-size: 16px;
-                padding: 14px 0 14px 20px;
-            }
-
-            .hero__btn {
-                font-size: 17px;
-            }
-        }
-
-
-        @media (max-width: 767px) {
-
-            .nav {
-                display: none;
-            }
-
-            .btn-aloqa.desktop-btn {
-                display: none;
-            }
-
-            .hamburger {
-                display: flex;
-            }
-
-            .header {
-                border-radius: 28px;
-                padding: 4px 14px;
-            }
-        }
-
-        @media (max-width:400px) {}
-
-        @media (max-width: 360px) {
-            .header__top {
-                gap: 10px;
-            }
-
-            .hero__right-info {
-                max-width: 180px;
-                padding: 3px 5px;
-            }
-        }
+   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; } html { scroll-behavior: smooth; } body { font-family: Gilroy, sans-serif; } html, body { overflow-x: hidden; } .header-wrap { padding: 10px 10px 51px 10px; } .container { max-width: 1240px !important; margin: 0 auto; padding: 0 10px; } /* ─── Header Bar ─── */ .header { width: 100% !important; height: var(--header-h); background: #4EACFF; border: 1.5px solid var(--blue-border); border-radius: 26px; display: flex; align-items: center; justify-content: space-between; padding: 15px 20px 15px 14px !important; position: relative; gap: 0; } .logo img { max-width: clamp(115px, 36vw, 130px); width: 100%; height: auto; } .header__top { display: flex; align-items: center; gap: 23px; } /* ─── Nav ─── */ .nav { flex: 1; display: flex; align-items: center; justify-content: center; gap: clamp(18px, 3.2vw, 46px); list-style: none; } .nav a { font-size: clamp(13px, 1.1vw, 15.5px); font-weight: 700; color: #fff; text-decoration: none; white-space: nowrap; font-weight: 600; font-size: 15px; line-height: 140%; text-align: center; letter-spacing: 0.01em; position: relative; padding-bottom: 2px; transition: opacity 0.2s ease; } .nav a::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 2px; background: rgba(255, 255, 255, 0.912); border-radius: 2px; transition: width 0.25s ease; } .text { font-weight: 400; font-size: 14px; line-height: 140%; color: white; } .nav a:hover { opacity: 0.85; } .nav a:hover::after { width: 100%; } /* ─── CTA Button ─── */ .btn-aloqa { color: #303030; text-decoration: none; border: none; cursor: pointer; border-radius: 21px; background: linear-gradient(90deg, #2BF88F 0%, #00FF7C 49.04%, #2BF88F 100%); padding: 12px 0 13px 0; max-width: 122px; width: 100%; text-align: center; font-weight: 600; font-size: 15px; line-height: 100%; transition: filter 0.22s ease, transform 0.18s ease; } .btn-aloqa:hover { filter: brightness(1.08); transform: translateY(-1px); } .btn-aloqa:active { transform: translateY(0); filter: brightness(0.97); } /* ─── Hamburger (mobile only) ─── */ .hamburger { display: none; flex-direction: column; justify-content: center; align-items: center; gap: 5px; width: 36px; height: 36px; background: rgba(255, 255, 255, 0.15); border: none; border-radius: 8px; cursor: pointer; flex-shrink: 0; margin-left: auto; padding: 6px; } .hamburger span { display: block; width: 20px; height: 2.2px; background: #fff; border-radius: 2px; transition: all 0.28s ease; transform-origin: center; } /* open state */ .hamburger.open span:nth-child(1) { transform: translateY(7.2px) rotate(45deg); } .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); } .hamburger.open span:nth-child(3) { transform: translateY(-7.2px) rotate(-45deg); } /* ─── Overlay ─── */ .navOverlay { position: fixed; inset: 0; background: rgba(7, 24, 43, .45); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); opacity: 0; pointer-events: none; transition: opacity .25s ease; z-index: 999; } .navOverlay.is-open { opacity: 1; pointer-events: auto; } /* ─── Mobile Drawer ─── */ .mobileNav { position: fixed; top: 0; right: 0; height: 100dvh; width: min(320px, 88vw); background: #fff; border-top-left-radius: 22px; border-bottom-left-radius: 22px; box-shadow: -20px 0 50px rgba(0, 0, 0, .18); transform: translateX(110%); transition: transform .28s ease; z-index: 1000; display: flex; flex-direction: column; padding: 14px 10px 16px; } .mobileNav.is-open { transform: translateX(0); } .mobileNav__top { display: flex; align-items: center; justify-content: space-between; padding: 6px 6px 10px; border-bottom: 1px solid rgba(41, 168, 232, .12); background-color: #4EACFF; border-radius: 20px; } .mobileNav__close { width: 40px; height: 40px; border: 0; background: #EEF6FD; border-radius: 12px; color: #29A8E8; display: grid; place-items: center; cursor: pointer; transition: background .15s ease; flex-shrink: 0; } .mobileNav__close:hover { background: #daeef9; } .mobileNav__list { list-style: none; padding: 12px 4px; display: grid; gap: 8px; overflow: auto; } .mobileNav__link { display: flex; align-items: center; justify-content: space-between; text-decoration: none; padding: 13px 14px; border-radius: 14px; background: #F0F8FE; color: #1a3a5c; font-weight: 700; font-size: 14px; transition: transform .08s ease, background .15s ease; } .mobileNav__link:hover { background: #daeef9; } .mobileNav__link:active { transform: scale(.98); } .mobileNav__link::after { content: '›'; font-size: 18px; color: #29A8E8; font-weight: 400; } .mobileNav__bottom { margin-top: auto; padding-top: 10px; display: grid; gap: 10px; } .mobileNav__btn { width: 100%; padding: 16px 0; border: none; cursor: pointer; border-radius: 50px; font-weight: 800; font-size: 15px; color: #fff; background: linear-gradient(90deg, #29A8E8 0%, #3BBEF5 100%); box-shadow: 0 4px 0 #1a85c2; transition: filter .18s ease, transform .15s ease; } .mobileNav__btn:hover { filter: brightness(1.07); } .mobileNav__btn:active { transform: translateY(2px); box-shadow: 0 2px 0 #1a85c2; } .mobileNav__cta { text-decoration: none; text-align: center; padding: 14px 10px; border-radius: 16px; background: rgba(41, 168, 232, .08); color: #1a3a5c; font-weight: 600; font-size: 13px; transition: background .15s ease; } .mobileNav__cta:hover { background: rgba(41, 168, 232, .14); } body.nav-open { overflow: hidden; } /* ══════════════════════════════════ HERO SECTION ══════════════════════════════════ */ .hero { align-items: center; gap: 40px; padding-bottom: 139px; position: relative; } .hero__container { max-width: 1150px; margin: 0 auto; padding: 0 10px; } /* ─── LEFT ─── */ .hero__left { display: flex; flex-direction: column; gap: 28px; position: relative; } .hero__title { font-weight: 700; font-size: clamp(22px, 7vw, 42px); line-height: 120%; margin-bottom: 36px; } /* ─── FORM CARD ─── */ .hero__card { border: 1px solid #02A5FF; max-width: 450px; width: 100%; border-radius: 26px; background-color: #4EACFF; padding: 33px 30px 36px 30px; display: flex; flex-direction: column; gap: 13.5px; } .hero__input { width: 100%; padding: 16px 0 15px 26px; border-radius: 14px; border: none; outline: none; background: #fff; font-weight: 600; font-size: 17px; line-height: 160%; } .hero__input::placeholder { color: #190E41; } .hero__input:focus { box-shadow: 0 0 0 3px rgba(59, 190, 245, .35); } .hero__btn { width: 100%; padding: 15px 0 14px 0; border: none; border-radius: 12px; background: linear-gradient(90deg, #2BF88F 0%, #00FF7C 49.04%, #2BF88F 100%); box-shadow: 0px 6px 0px 0px #1AA960; color: #303030; font-weight: 600; font-size: 18px; line-height: 160%; margin-bottom: 8px; cursor: pointer; transition: filter .18s ease, transform .15s ease; } .hero__btn:hover { filter: brightness(1.06); } .hero__btn:active { transform: translateY(3px); box-shadow: 0 1px 0 #1da038; } .hero__legal { font-weight: 500; font-size: clamp(8.5px, 2.7vw, 12px); line-height: 120%; text-align: center; color: white; } .hero__legal a { text-underline-offset: 2px; color: white; } /* ─── RIGHT ─── */ .hero__right { position: relative; } .hero__right img { object-fit: cover; max-width: clamp(300px, 228vw, 592px); width: 100%; right: 0; top: -500px; z-index: 3; position: absolute; height: auto; } .shaddow { box-shadow: 0px 0px 150px 0px #65B6FF80; width: 100%; max-width: clamp(220px, 35vw, 517px); height: clamp(220px, 35vw, 517px); border-radius: 100%; position: absolute; right: 20px; top: -440px; } .hero__right-info { max-width: 227px; width: 100%; border-radius: 8px; transform: rotate(-14.5deg); white-space: nowrap; height: 39px; background: linear-gradient(90deg, #2BF88F 0%, #00FF7C 49.04%, #2BF88F 100%); box-shadow: 5.51px 4px 0px 0px #3495EC; padding: 4px 10px; display: flex; align-items: center; justify-content: center; position: absolute; right: 0; z-index: 5; bottom: 28px; } .hero__right-info p { color: #303030; font-weight: 700; font-size: clamp(17px, 5.3vw, 22px); line-height: 100%; } .gradinet { background-color: white; width: 592px; height: 258px; filter: blur(50px); position: absolute; top: -75px; z-index: 4; right: 0; } @media (max-width: 1024px) { .nav { gap: clamp(12px, 2.5vw, 28px); } .btn-aloqa { padding: 10px 22px; } .gradinet { top: 240px; } .shaddow { top: 50px; left: 50%; transform: translateX(-50%); } } @media (max-width:1000px) { .hero__right img { margin: 0 auto; transform: translateX(-50%); left: 50%; top: 0; } .hero__right-info { max-width: 200px; padding: 3px 8px; } } @media (max-width: 860px) { .hero { grid-template-columns: 1fr; gap: 48px; } .hero__right { min-height: 360px; order: -1; } .hero__card { max-width: 100%; } } @media (max-width: 480px) { .hero__right { min-height: 300px; } .header-wrap { padding-bottom: 25px; } .hero__left { gap: 5px; } .hero__card { padding: 22px 20px 20px 20px; } .hero__input { font-size: 16px; padding: 14px 0 14px 20px; } .hero__btn { font-size: 17px; } } @media (max-width: 767px) { .nav { display: none; } .btn-aloqa.desktop-btn { display: none; } .hamburger { display: flex; } .header { border-radius: 28px; padding: 4px 14px; } } @media (max-width: 360px) { .header__top { gap: 10px; } .hero__right-info { max-width: 180px; padding: 3px 5px; } }
     </style>
 
     <link rel="stylesheet" href="./css/main.css" media="print" onload="this.media='all'" />
+    <link rel="stylesheet" href="./css/modal.css" media="print" onload="this.media='all'" />
     <noscript>
         <link rel="stylesheet" href="./css/main.css" />
+        <link rel="stylesheet" href="./css/modal.css" />
     </noscript>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 </head>
@@ -682,7 +66,8 @@
 
                 <button class="mobileNav__close" id="navCloseBtn" type="button" aria-label="Menyuni yopish">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-                        <path d="M6 6L18 18M18 6L6 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"></path>
+                        <path d="M6 6L18 18M18 6L6 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+                        </path>
                     </svg>
                 </button>
             </div>
@@ -720,6 +105,7 @@
                     <input id="name" class="hero__input" type="text" placeholder="Ismingiz">
                     <span id="nameError" style="display:none; color:red;">❌ Ismingizni kiriting!</span>
 
+                    
                     <input id="phone" class="hero__input" type="tel" placeholder="+998 99 123-45-67">
                     <span id="phoneError" style="display:none; color:red;">❌ Telefon raqam mos emas!</span>
 
@@ -918,7 +304,7 @@
                     </div>
                 </div>
 
-                <button class="course__btn"> O‘ZIMGA MOS YO‘NALISHNI TANLAYMAN</button>
+                <button class="course__btn webinar-cta"> O‘ZIMGA MOS YO‘NALISHNI TANLAYMAN</button>
             </div>
 
 
@@ -957,7 +343,7 @@
                     <p class="growth__text">Unda sizga avval Elementary <br> Foundation kerak bo‘ladi.</p>
                 </div>
 
-                <button class="course__btn">AVVAL BAZANI MUSTAHKAMLASH</button>
+                <button class="course__btn webinar-cta">AVVAL BAZANI MUSTAHKAMLASH</button>
             </div>
 
         </div>
@@ -1053,7 +439,7 @@
             </div>
 
             <p class="growth__text">Natija: 3–4 oy ichida IELTS Vision <br> kursiga tayyor bo‘lasiz.</p>
-            <button class="course__btn" style="margin-bottom: 136px;">AVVAL BAZANI MUSTAHKAMLASH</button>
+            <button class="course__btn webinar-cta" style="margin-bottom: 136px;">AVVAL BAZANI MUSTAHKAMLASH</button>
         </div>
     </section>
 
@@ -1154,7 +540,8 @@
                     </p>
                 </div>
 
-                <button class="course__btn" style="margin-top: -10px; max-width: 316px;">KURSGA YOZILISH</button>
+                <button class="course__btn webinar-cta" style="margin-top: -10px; max-width: 316px;">KURSGA
+                    YOZILISH</button>
             </div>
 
             <!-- Arrows 2 -->
@@ -1211,7 +598,7 @@
             <p class="growth__text">Kuchli nazorat ostida IELTS darajangizni kamida 1.0 balga <br> ko‘tara olishingizga
                 kafolat beramiz.</p>
 
-            <button class="course__btn course__btn--primary">
+            <button class="course__btn webinar-cta course__btn--primary">
                 KURSDA O‘QIMOQCHIMAN
             </button>
 
@@ -1254,7 +641,7 @@
                 </div>
             </div>
 
-            <button class="course__btn course__btn--primary" style="max-width: 316px;">
+            <button class="course__btn webinar-cta course__btn--primary" style="max-width: 316px;">
                 RO‘YXATDAN O‘TISH
             </button>
         </div>
@@ -1286,7 +673,7 @@
                     height="300" alt="bg">
             </div>
 
-            <button class="course__btn course__btn--primary" style="max-width: 316px; margin-top: 51px;">
+            <button class="course__btn webinar-cta course__btn--primary" style="max-width: 316px; margin-top: 51px;">
                 KURSGA YOZILMOQCHIMAN
             </button>
         </div>
@@ -1320,7 +707,7 @@
                     </button>
                 </div>
 
-                <button class="work__btn">KURSGA YOZILISH</button>
+                <button class="work__btn webinar-cta">KURSGA YOZILISH</button>
             </div>
         </div>
     </section>
@@ -1357,14 +744,23 @@
                 <!-- Card 3 — IELTS Nazoratli (star badge) -->
                 <div class="price__card">
                     <div class="price__badge">
-                        <img src="./images/start.avif" width="48" height="48" decoding="async" alt="star"
-                            loading="lazy">
+                        <svg width="26" height="25" viewBox="0 0 26 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M11.1277 1.11444C11.8613 -0.372053 13.981 -0.372051 14.7146 1.11444L17.1581 6.06545C17.4494 6.65574 18.0125 7.06487 18.664 7.15953L24.1277 7.95346C25.7682 8.19183 26.4232 10.2078 25.2361 11.3649L21.2825 15.2187C20.8112 15.6781 20.5961 16.3401 20.7073 16.9889L21.6407 22.4306C21.9209 24.0644 20.206 25.3104 18.7388 24.539L13.8518 21.9698C13.2692 21.6634 12.5731 21.6634 11.9905 21.9698L7.10352 24.539C5.63627 25.3104 3.9214 24.0644 4.20162 22.4306L5.13495 16.9889C5.24622 16.3401 5.03113 15.6781 4.55975 15.2187L0.606135 11.3648C-0.580899 10.2078 0.0741236 8.19183 1.71456 7.95346L7.17833 7.15953C7.82975 7.06487 8.39288 6.65574 8.6842 6.06545L11.1277 1.11444Z"
+                                fill="#FFD74A" />
+                        </svg>
+
                     </div>
                     <img src="./images/ielts-icon.avif" alt="IELTS Nazoratsiz" class="main-img" loading="lazy"
                         decoding="async">
                     <div class="price__info price__info--blue">
                         <div class="price__info-badge">
-                            <img src="./images/star.svg" alt="star" decoding="async" loading="lazy">
+                            <svg width="26" height="25" viewBox="0 0 26 25" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M11.1277 1.11444C11.8613 -0.372053 13.981 -0.372051 14.7146 1.11444L17.1581 6.06545C17.4494 6.65574 18.0125 7.06487 18.664 7.15953L24.1277 7.95346C25.7682 8.19183 26.4232 10.2078 25.2361 11.3649L21.2825 15.2187C20.8112 15.6781 20.5961 16.3401 20.7073 16.9889L21.6407 22.4306C21.9209 24.0644 20.206 25.3104 18.7388 24.539L13.8518 21.9698C13.2692 21.6634 12.5731 21.6634 11.9905 21.9698L7.10352 24.539C5.63627 25.3104 3.9214 24.0644 4.20162 22.4306L5.13495 16.9889C5.24622 16.3401 5.03113 15.6781 4.55975 15.2187L0.606135 11.3648C-0.580899 10.2078 0.0741236 8.19183 1.71456 7.95346L7.17833 7.15953C7.82975 7.06487 8.39288 6.65574 8.6842 6.06545L11.1277 1.11444Z"
+                                    fill="#FFD74A" />
+                            </svg>
                         </div>
                         <h3>IELTS Vision — Nazoratli</h3>
                         <p>Kuniga 4–5 soat ajratishga va ustoz <br> nazoratida tez natija olishga tayyorlar uchun</p>
@@ -1390,11 +786,11 @@
                     oling.</p>
             </div>
 
-            <!-- Right card -->
             <form class="hero__card js-form">
 
                 <input id="name" class="hero__input" type="text" placeholder="Ismingiz">
                 <span id="nameError" style="display:none; color:red;">❌ Ismingizni kiriting!</span>
+                
 
                 <input id="phone" class="hero__input" type="tel" placeholder="+998 99 123-45-67">
                 <span id="phoneError" style="display:none; color:red;">❌ Telefon raqam mos emas!</span>
@@ -1540,11 +936,75 @@
             </div>
         </div>
     </footer>
-    <script defer>
-        const hamburger = document.querySelector(".hamburger"), mobileNav = document.getElementById("mobileNav"), navOverlay = document.getElementById("navOverlay"), navCloseBtn = document.getElementById("navCloseBtn"), openNav = () => { mobileNav.classList.add("is-open"), navOverlay.classList.add("is-open"), document.body.classList.add("nav-open"), mobileNav.setAttribute("aria-hidden", "false"), navOverlay.setAttribute("aria-hidden", "false") }, closeNav = () => { mobileNav.classList.remove("is-open"), navOverlay.classList.remove("is-open"), document.body.classList.remove("nav-open"), mobileNav.setAttribute("aria-hidden", "true"), navOverlay.setAttribute("aria-hidden", "true") }; hamburger.addEventListener("click", openNav), navCloseBtn.addEventListener("click", closeNav), navOverlay.addEventListener("click", closeNav), mobileNav.querySelectorAll(".mobileNav__link").forEach((e => e.addEventListener("click", closeNav))), document.addEventListener("keydown", (e => { "Escape" === e.key && closeNav() }));
-    </script>
 
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <!-- Modal -->
+    <div id="registrationModal2" class="homeModal" style="display: none">
+        <div class="homeModalOverlay2"></div>
+        <div class="homeFormContainer">
+            <button class="closeButton" id="closeModalBtn2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 12 12" fill="none">
+                    <path d="M1 11L11 1M1 1.00001L11 11" stroke="currentColor" stroke-width="1.5"
+                        stroke-linecap="round" />
+                </svg>
+            </button>
+            <div class="homeFormTop">
+                <h1 class="homeFormTopTitle">
+                    Bepul qatnashish uchun ma'lumotlaringizni kiriting!
+                </h1>
+            </div>
+            <form id="registrationForm2" name="contact-form">
+                <!-- ISM -->
+                <div class="HomeFormRow">
+                    <label class="HomeFormRowLabel" for="name">Ismingiz:</label>
+                    <input class="HomeFormRowInput" type="text" id="name2" name="name" placeholder="Ismingizni kiriting"
+                        autocomplete="name" />
+                    <p class="homeFormErrorText" id="nameError2" style="display: none">
+                        ❌ Ismingizni kiriting!
+                    </p>
+                </div>
+
+                <!-- TELEFON -->
+                <div class="HomeFormRow">
+                    <label class="HomeFormRowLabel" for="phone">Telefon raqamingiz:</label>
+
+                    <div class="phone-input-container">
+                        <!-- LEFT: country -->
+                        <button type="button" class="selected-country" id="selectedCountry2">
+                            <span class="selected-flag" id="selectedCountryFlag">🇺🇿</span>
+
+                            <svg id="dropdownIcon2" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                            <span class="selected-code" id="selectedCountryCodeText">+998</span>
+                        </button>
+
+                        <!-- dropdown -->
+                        <div class="country-dropdown" id="countryDropdown2" style="display:none"></div>
+
+                        <!-- RIGHT: phone input (number span inside) -->
+                        <div class="phone-field">
+                            <input class="HomeFormRowInput phone-input" type="tel" id="phone2" name="phone"
+                                inputmode="numeric" placeholder="88 888 88 88" autocomplete="tel"
+                                style="border: none; background-color: transparent;padding-left: 5px;" />
+                        </div>
+                    </div>
+
+                    <p class="homeFormErrorText" id="phoneError2" style="display:none">
+                        ❌ Telefon raqam mos emas!
+                    </p>
+                </div>
+
+
+                <button type="submit" class="HomeFormBtn" id="submitBtn2">
+                    DAVOM ETISH
+                </button>
+            </form>
+
+        </div>
+    </div>
+    <script defer src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script defer src="./js/phoneFormatter.js"></script>
     <script defer src="./js/app.js"></script>
 </body>
