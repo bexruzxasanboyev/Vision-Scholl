@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vision Scholl</title>
     <style>
-   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; } html { scroll-behavior: smooth; } body { font-family: Gilroy, sans-serif; } html, body { overflow-x: hidden; } .header-wrap { padding: 10px 10px 51px 10px; } .container { max-width: 1240px !important; margin: 0 auto; padding: 0 10px; } /* ─── Header Bar ─── */ .header { width: 100% !important; height: var(--header-h); background: #4EACFF; border: 1.5px solid var(--blue-border); border-radius: 26px; display: flex; align-items: center; justify-content: space-between; padding: 15px 20px 15px 14px !important; position: relative; gap: 0; } .logo img { max-width: clamp(115px, 36vw, 130px); width: 100%; height: auto; } .header__top { display: flex; align-items: center; gap: 23px; } /* ─── Nav ─── */ .nav { flex: 1; display: flex; align-items: center; justify-content: center; gap: clamp(18px, 3.2vw, 46px); list-style: none; } .nav a { font-size: clamp(13px, 1.1vw, 15.5px); font-weight: 700; color: #fff; text-decoration: none; white-space: nowrap; font-weight: 600; font-size: 15px; line-height: 140%; text-align: center; letter-spacing: 0.01em; position: relative; padding-bottom: 2px; transition: opacity 0.2s ease; } .nav a::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 2px; background: rgba(255, 255, 255, 0.912); border-radius: 2px; transition: width 0.25s ease; } .text { font-weight: 400; font-size: 14px; line-height: 140%; color: white; } .nav a:hover { opacity: 0.85; } .nav a:hover::after { width: 100%; } /* ─── CTA Button ─── */ .btn-aloqa { color: #303030; text-decoration: none; border: none; cursor: pointer; border-radius: 21px; background: linear-gradient(90deg, #2BF88F 0%, #00FF7C 49.04%, #2BF88F 100%); padding: 12px 0 13px 0; max-width: 122px; width: 100%; text-align: center; font-weight: 600; font-size: 15px; line-height: 100%; transition: filter 0.22s ease, transform 0.18s ease; } .btn-aloqa:hover { filter: brightness(1.08); transform: translateY(-1px); } .btn-aloqa:active { transform: translateY(0); filter: brightness(0.97); } /* ─── Hamburger (mobile only) ─── */ .hamburger { display: none; flex-direction: column; justify-content: center; align-items: center; gap: 5px; width: 36px; height: 36px; background: rgba(255, 255, 255, 0.15); border: none; border-radius: 8px; cursor: pointer; flex-shrink: 0; margin-left: auto; padding: 6px; } .hamburger span { display: block; width: 20px; height: 2.2px; background: #fff; border-radius: 2px; transition: all 0.28s ease; transform-origin: center; } /* open state */ .hamburger.open span:nth-child(1) { transform: translateY(7.2px) rotate(45deg); } .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); } .hamburger.open span:nth-child(3) { transform: translateY(-7.2px) rotate(-45deg); } /* ─── Overlay ─── */ .navOverlay { position: fixed; inset: 0; background: rgba(7, 24, 43, .45); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); opacity: 0; pointer-events: none; transition: opacity .25s ease; z-index: 999; } .navOverlay.is-open { opacity: 1; pointer-events: auto; } /* ─── Mobile Drawer ─── */ .mobileNav { position: fixed; top: 0; right: 0; height: 100dvh; width: min(320px, 88vw); background: #fff; border-top-left-radius: 22px; border-bottom-left-radius: 22px; box-shadow: -20px 0 50px rgba(0, 0, 0, .18); transform: translateX(110%); transition: transform .28s ease; z-index: 1000; display: flex; flex-direction: column; padding: 14px 10px 16px; } .mobileNav.is-open { transform: translateX(0); } .mobileNav__top { display: flex; align-items: center; justify-content: space-between; padding: 6px 6px 10px; border-bottom: 1px solid rgba(41, 168, 232, .12); background-color: #4EACFF; border-radius: 20px; } .mobileNav__close { width: 40px; height: 40px; border: 0; background: #EEF6FD; border-radius: 12px; color: #29A8E8; display: grid; place-items: center; cursor: pointer; transition: background .15s ease; flex-shrink: 0; } .mobileNav__close:hover { background: #daeef9; } .mobileNav__list { list-style: none; padding: 12px 4px; display: grid; gap: 8px; overflow: auto; } .mobileNav__link { display: flex; align-items: center; justify-content: space-between; text-decoration: none; padding: 13px 14px; border-radius: 14px; background: #F0F8FE; color: #1a3a5c; font-weight: 700; font-size: 14px; transition: transform .08s ease, background .15s ease; } .mobileNav__link:hover { background: #daeef9; } .mobileNav__link:active { transform: scale(.98); } .mobileNav__link::after { content: '›'; font-size: 18px; color: #29A8E8; font-weight: 400; } .mobileNav__bottom { margin-top: auto; padding-top: 10px; display: grid; gap: 10px; } .mobileNav__btn { width: 100%; padding: 16px 0; border: none; cursor: pointer; border-radius: 50px; font-weight: 800; font-size: 15px; color: #fff; background: linear-gradient(90deg, #29A8E8 0%, #3BBEF5 100%); box-shadow: 0 4px 0 #1a85c2; transition: filter .18s ease, transform .15s ease; } .mobileNav__btn:hover { filter: brightness(1.07); } .mobileNav__btn:active { transform: translateY(2px); box-shadow: 0 2px 0 #1a85c2; } .mobileNav__cta { text-decoration: none; text-align: center; padding: 14px 10px; border-radius: 16px; background: rgba(41, 168, 232, .08); color: #1a3a5c; font-weight: 600; font-size: 13px; transition: background .15s ease; } .mobileNav__cta:hover { background: rgba(41, 168, 232, .14); } body.nav-open { overflow: hidden; } /* ══════════════════════════════════ HERO SECTION ══════════════════════════════════ */ .hero { align-items: center; gap: 40px; padding-bottom: 139px; position: relative; } .hero__container { max-width: 1150px; margin: 0 auto; padding: 0 10px; } /* ─── LEFT ─── */ .hero__left { display: flex; flex-direction: column; gap: 28px; position: relative; } .hero__title { font-weight: 700; font-size: clamp(22px, 7vw, 42px); line-height: 120%; margin-bottom: 36px; } /* ─── FORM CARD ─── */ .hero__card { border: 1px solid #02A5FF; max-width: 450px; width: 100%; border-radius: 26px; background-color: #4EACFF; padding: 33px 30px 36px 30px; display: flex; flex-direction: column; gap: 13.5px; } .hero__input { width: 100%; padding: 16px 0 15px 26px; border-radius: 14px; border: none; outline: none; background: #fff; font-weight: 600; font-size: 17px; line-height: 160%; } .hero__input::placeholder { color: #190E41; } .hero__input:focus { box-shadow: 0 0 0 3px rgba(59, 190, 245, .35); } .hero__btn { width: 100%; padding: 15px 0 14px 0; border: none; border-radius: 12px; background: linear-gradient(90deg, #2BF88F 0%, #00FF7C 49.04%, #2BF88F 100%); box-shadow: 0px 6px 0px 0px #1AA960; color: #303030; font-weight: 600; font-size: 18px; line-height: 160%; margin-bottom: 8px; cursor: pointer; transition: filter .18s ease, transform .15s ease; } .hero__btn:hover { filter: brightness(1.06); } .hero__btn:active { transform: translateY(3px); box-shadow: 0 1px 0 #1da038; } .hero__legal { font-weight: 500; font-size: clamp(8.5px, 2.7vw, 12px); line-height: 120%; text-align: center; color: white; } .hero__legal a { text-underline-offset: 2px; color: white; } /* ─── RIGHT ─── */ .hero__right { position: relative; } .hero__right img { object-fit: cover; max-width: clamp(300px, 228vw, 592px); width: 100%; right: 0; top: -500px; z-index: 3; position: absolute; height: auto; } .shaddow { box-shadow: 0px 0px 150px 0px #65B6FF80; width: 100%; max-width: clamp(220px, 35vw, 517px); height: clamp(220px, 35vw, 517px); border-radius: 100%; position: absolute; right: 20px; top: -440px; } .hero__right-info { max-width: 227px; width: 100%; border-radius: 8px; transform: rotate(-14.5deg); white-space: nowrap; height: 39px; background: linear-gradient(90deg, #2BF88F 0%, #00FF7C 49.04%, #2BF88F 100%); box-shadow: 5.51px 4px 0px 0px #3495EC; padding: 4px 10px; display: flex; align-items: center; justify-content: center; position: absolute; right: 0; z-index: 5; bottom: 28px; } .hero__right-info p { color: #303030; font-weight: 700; font-size: clamp(17px, 5.3vw, 22px); line-height: 100%; } .gradinet { background-color: white; width: 592px; height: 258px; filter: blur(50px); position: absolute; top: -75px; z-index: 4; right: 0; } @media (max-width: 1024px) { .nav { gap: clamp(12px, 2.5vw, 28px); } .btn-aloqa { padding: 10px 22px; } .gradinet { top: 240px; } .shaddow { top: 50px; left: 50%; transform: translateX(-50%); } } @media (max-width:1000px) { .hero__right img { margin: 0 auto; transform: translateX(-50%); left: 50%; top: 0; } .hero__right-info { max-width: 200px; padding: 3px 8px; } } @media (max-width: 860px) { .hero { grid-template-columns: 1fr; gap: 48px; } .hero__right { min-height: 360px; order: -1; } .hero__card { max-width: 100%; } } @media (max-width: 480px) { .hero__right { min-height: 300px; } .header-wrap { padding-bottom: 25px; } .hero__left { gap: 5px; } .hero__card { padding: 22px 20px 20px 20px; } .hero__input { font-size: 16px; padding: 14px 0 14px 20px; } .hero__btn { font-size: 17px; } } @media (max-width: 767px) { .nav { display: none; } .btn-aloqa.desktop-btn { display: none; } .hamburger { display: flex; } .header { border-radius: 28px; padding: 4px 14px; } } @media (max-width: 360px) { .header__top { gap: 10px; } .hero__right-info { max-width: 180px; padding: 3px 5px; } }
+      *, *::before, *::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{font-family:Gilroy, sans-serif}html, body{overflow-x:hidden}.header-wrap{padding:10px 10px 51px 10px}.container{max-width:1240px !important;margin:0 auto;padding:0 10px}.header{width:100% !important;height:var(--header-h);background:#4EACFF;border:1.5px solid var(--blue-border);border-radius:26px;display:flex;align-items:center;justify-content:space-between;padding:15px 20px 15px 14px !important;position:relative;gap:0}.logo img{max-width:clamp(115px, 36vw, 130px);width:100%;height:auto}.header__top{display:flex;align-items:center;gap:23px}.nav{flex:1;display:flex;align-items:center;justify-content:center;gap:clamp(18px, 3.2vw, 46px);list-style:none}.nav a{font-size:clamp(13px, 1.1vw, 15.5px);font-weight:700;color:#fff;text-decoration:none;white-space:nowrap;font-weight:600;font-size:15px;line-height:140%;text-align:center;letter-spacing:0.01em;position:relative;padding-bottom:2px;transition:opacity 0.2s ease}.nav a::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:2px;background:rgba(255, 255, 255, 0.912);border-radius:2px;transition:width 0.25s ease}.text{font-weight:400;font-size:14px;line-height:140%;color:white}.nav a:hover{opacity:0.85}.nav a:hover::after{width:100%}.btn-aloqa{color:#303030;text-decoration:none;border:none;cursor:pointer;border-radius:21px;background:linear-gradient(90deg, #2BF88F 0%, #00FF7C 49.04%, #2BF88F 100%);padding:12px 0 13px 0;max-width:122px;width:100%;text-align:center;font-weight:600;font-size:15px;line-height:100%;transition:filter 0.22s ease, transform 0.18s ease}.btn-aloqa:hover{filter:brightness(1.08);transform:translateY(-1px)}.btn-aloqa:active{transform:translateY(0);filter:brightness(0.97)}.hamburger{display:none;flex-direction:column;justify-content:center;align-items:center;gap:5px;width:36px;height:36px;background:rgba(255, 255, 255, 0.15);border:none;border-radius:8px;cursor:pointer;flex-shrink:0;margin-left:auto;padding:6px}.hamburger span{display:block;width:20px;height:2.2px;background:#fff;border-radius:2px;transition:all 0.28s ease;transform-origin:center}.hamburger.open span:nth-child(1){transform:translateY(7.2px) rotate(45deg)}.hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}.hamburger.open span:nth-child(3){transform:translateY(-7.2px) rotate(-45deg)}.navOverlay{position:fixed;inset:0;background:rgba(7, 24, 43, .45);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);opacity:0;pointer-events:none;transition:opacity .25s ease;z-index:999}.navOverlay.is-open{opacity:1;pointer-events:auto}.mobileNav{position:fixed;top:0;right:0;height:100dvh;width:min(320px, 88vw);background:#fff;border-top-left-radius:22px;border-bottom-left-radius:22px;box-shadow:-20px 0 50px rgba(0, 0, 0, .18);transform:translateX(110%);transition:transform .28s ease;z-index:1000;display:flex;flex-direction:column;padding:14px 10px 16px}.mobileNav.is-open{transform:translateX(0)}.mobileNav__top{display:flex;align-items:center;justify-content:space-between;padding:6px 6px 10px;border-bottom:1px solid rgba(41, 168, 232, .12);background-color:#4EACFF;border-radius:20px}.mobileNav__close{width:40px;height:40px;border:0;background:#EEF6FD;border-radius:12px;color:#29A8E8;display:grid;place-items:center;cursor:pointer;transition:background .15s ease;flex-shrink:0}.mobileNav__close:hover{background:#daeef9}.mobileNav__list{list-style:none;padding:12px 4px;display:grid;gap:8px;overflow:auto}.mobileNav__link{display:flex;align-items:center;justify-content:space-between;text-decoration:none;padding:13px 14px;border-radius:14px;background:#F0F8FE;color:#1a3a5c;font-weight:700;font-size:14px;transition:transform .08s ease, background .15s ease}.mobileNav__link:hover{background:#daeef9}.mobileNav__link:active{transform:scale(.98)}.mobileNav__link::after{content:'›';font-size:18px;color:#29A8E8;font-weight:400}.mobileNav__bottom{margin-top:auto;padding-top:10px;display:grid;gap:10px}.mobileNav__btn{width:100%;padding:16px 0;border:none;cursor:pointer;border-radius:50px;font-weight:800;font-size:15px;color:#fff;background:linear-gradient(90deg, #29A8E8 0%, #3BBEF5 100%);box-shadow:0 4px 0 #1a85c2;transition:filter .18s ease, transform .15s ease}.mobileNav__btn:hover{filter:brightness(1.07)}.mobileNav__btn:active{transform:translateY(2px);box-shadow:0 2px 0 #1a85c2}.mobileNav__cta{text-decoration:none;text-align:center;padding:14px 10px;border-radius:16px;background:rgba(41, 168, 232, .08);color:#1a3a5c;font-weight:600;font-size:13px;transition:background .15s ease}.mobileNav__cta:hover{background:rgba(41, 168, 232, .14)}body.nav-open{overflow:hidden}.hero{align-items:center;gap:40px;padding-bottom:139px;position:relative}.hero__container{max-width:1150px;margin:0 auto;padding:0 10px}.hero__left{display:flex;flex-direction:column;gap:28px;position:relative}.hero__title{font-weight:700;font-size:clamp(22px, 7vw, 42px);line-height:120%;margin-bottom:36px}.hero__card{border:1px solid #02A5FF;max-width:450px;width:100%;border-radius:26px;background-color:#4EACFF;padding:33px 30px 36px 30px;display:flex;flex-direction:column;gap:13.5px}.hero__input{width:100%;padding:16px 0 15px 26px;border-radius:14px;border:none;outline:none;background:#fff;font-weight:600;font-size:17px;line-height:160%}.hero__input::placeholder{color:#190E41}.hero__input:focus{box-shadow:0 0 0 3px rgba(59, 190, 245, .35)}.hero__btn{width:100%;padding:15px 0 14px 0;border:none;border-radius:12px;background:linear-gradient(90deg, #2BF88F 0%, #00FF7C 49.04%, #2BF88F 100%);box-shadow:0px 6px 0px 0px #1AA960;color:#303030;font-weight:600;font-size:18px;line-height:160%;margin-bottom:8px;cursor:pointer;transition:filter .18s ease, transform .15s ease}.hero__btn:hover{filter:brightness(1.06)}.hero__btn:active{transform:translateY(3px);box-shadow:0 1px 0 #1da038}.hero__legal{font-weight:500;font-size:clamp(8.5px, 2.7vw, 12px);line-height:120%;text-align:center;color:white}.hero__legal a{text-underline-offset:2px;color:white}.hero__right{position:relative}.hero__right img{object-fit:cover;max-width:clamp(300px, 228vw, 592px);width:100%;right:0;top:-500px;z-index:3;position:absolute;height:auto}.shaddow{box-shadow:0px 0px 150px 0px #65B6FF80;width:100%;max-width:clamp(220px, 35vw, 517px);height:clamp(220px, 35vw, 517px);border-radius:100%;position:absolute;right:20px;top:-440px}.hero__right-info{max-width:227px;width:100%;border-radius:8px;transform:rotate(-14.5deg);white-space:nowrap;height:39px;background:linear-gradient(90deg, #2BF88F 0%, #00FF7C 49.04%, #2BF88F 100%);box-shadow:5.51px 4px 0px 0px #3495EC;padding:4px 10px;display:flex;align-items:center;justify-content:center;position:absolute;right:0;z-index:5;bottom:28px}.hero__right-info p{color:#303030;font-weight:700;font-size:clamp(17px, 5.3vw, 22px);line-height:100%}.gradinet{background-color:white;width:592px;height:258px;filter:blur(50px);position:absolute;top:-75px;z-index:4;right:0}@media (max-width:1024px){.nav{gap:clamp(12px, 2.5vw, 28px)}.btn-aloqa{padding:10px 22px}.gradinet{top:240px}.shaddow{top:50px;left:50%;transform:translateX(-50%)}}@media (max-width:1000px){.hero__right img{margin:0 auto;transform:translateX(-50%);left:50%;top:0}.hero__right-info{max-width:200px;padding:3px 8px}}@media (max-width:860px){.hero{grid-template-columns:1fr;gap:48px}.hero__right{min-height:360px;order:-1}.hero__card{max-width:100%}}@media (max-width:480px){.hero__right{min-height:300px}.header-wrap{padding-bottom:25px}.hero__left{gap:5px}.hero__card{padding:22px 20px 20px 20px}.hero__input{font-size:16px;padding:14px 0 14px 20px}.hero__btn{font-size:17px}}@media (max-width:767px){.nav{display:none}.btn-aloqa.desktop-btn{display:none}.hamburger{display:flex}.header{border-radius:28px;padding:4px 14px}}@media (max-width:360px){.header__top{gap:10px}.hero__right-info{max-width:180px;padding:3px 5px}}
     </style>
 
     <link rel="stylesheet" href="./css/main.css" media="print" onload="this.media='all'" />
@@ -81,7 +81,7 @@
 
             <div class="mobileNav__bottom">
                 <button class="mobileNav__btn" type="button">Aloqa</button>
-                <a class="mobileNav__cta" href="tel:+998000000000">Hozir bog'lanish → +998 00 000-00-00</a>
+                <a class="mobileNav__cta" href="tel:+998123456789">Hozir bog'lanish → +998 12 345-67-89</a>
             </div>
 
         </nav>
@@ -102,23 +102,16 @@
 
                 <form class="hero__card js-form">
 
-                    <input id="name" class="hero__input" type="text" placeholder="Ismingiz">
-                    <span id="nameError" style="display:none; color:red;">❌ Ismingizni kiriting!</span>
-
-                    
-                    <input id="phone" class="hero__input" type="tel" placeholder="+998 99 123-45-67">
-                    <span id="phoneError" style="display:none; color:red;">❌ Telefon raqam mos emas!</span>
-
-                    <button id="submitBtn" class="hero__btn" type="submit">
-                        Ariza qoldirish
+                    <input class="hero__input name" type="text" placeholder="Ismingiz">
+                    <span class="nameError" style="display:none;">❌ Ismingizni kiriting!</span>
+                
+                    <input class="hero__input phone" type="tel" placeholder="+998 99 123-45-67">
+                    <span class="phoneError" style="display:none;">❌ Telefon raqam mos emas!</span>
+                
+                    <button class="hero__btn js-submit" type="submit">
+                        Ariza qoldirish 
                     </button>
-
-                    <p class="hero__legal">
-                        Tugmani bosish orqali siz
-                        <a href="#">ommaviy offertamizga</a>
-                        rozilik bildirasiz!
-                    </p>
-
+                
                 </form>
             </div>
 
@@ -726,7 +719,7 @@
                     <div class="price__info price__info--green">
                         <h3>Elementary Foundation</h3>
                         <p>Bazani 0 dan mustahkamlashni <br> istaganlar uchun</p>
-                        <button class="price__cta">ELEMENTARYDA O‘QIMOQCHIMAN</button>
+                        <button class="price__cta webinar-cta">ELEMENTARYDA O‘QIMOQCHIMAN</button>
                     </div>
                 </div>
 
@@ -737,7 +730,7 @@
                     <div class="price__info price__info--blue">
                         <h3>IELTS Vision — Nazoratsiz</h3>
                         <p>O'z tezligida o'rganishni istaganlar uchun</p>
-                        <button class="price__cta">NAZORATSIZ O‘RGANMOQCHIMAN</button>
+                        <button class="price__cta webinar-cta">NAZORATSIZ O‘RGANMOQCHIMAN</button>
                     </div>
                 </div>
 
@@ -764,7 +757,7 @@
                         </div>
                         <h3>IELTS Vision — Nazoratli</h3>
                         <p>Kuniga 4–5 soat ajratishga va ustoz <br> nazoratida tez natija olishga tayyorlar uchun</p>
-                        <button class="price__cta">USTOZ NAZORATIDA O‘QIMOQCHIMAN</button>
+                        <button class="price__cta webinar-cta">USTOZ NAZORATIDA O‘QIMOQCHIMAN</button>
                     </div>
                 </div>
 
@@ -788,23 +781,16 @@
 
             <form class="hero__card js-form">
 
-                <input id="name" class="hero__input" type="text" placeholder="Ismingiz">
-                <span id="nameError" style="display:none; color:red;">❌ Ismingizni kiriting!</span>
-                
-
-                <input id="phone" class="hero__input" type="tel" placeholder="+998 99 123-45-67">
-                <span id="phoneError" style="display:none; color:red;">❌ Telefon raqam mos emas!</span>
-
-                <button id="submitBtn" class="hero__btn" type="submit">
+                <input class="hero__input name" type="text" placeholder="Ismingiz">
+                <span class="nameError" style="display:none;">❌ Ismingizni kiriting!</span>
+            
+                <input class="hero__input phone" type="tel" placeholder="+998 99 123-45-67">
+                <span class="phoneError" style="display:none;">❌ Telefon raqam mos emas!</span>
+            
+                <button class="hero__btn js-submit" type="submit">
                     Ariza qoldirish
                 </button>
-
-                <p class="hero__legal">
-                    Tugmani bosish orqali siz
-                    <a href="#">ommaviy offertamizga</a>
-                    rozilik bildirasiz!
-                </p>
-
+            
             </form>
         </div>
     </section>
@@ -981,7 +967,7 @@
                         </button>
 
                         <!-- dropdown -->
-                        <div class="country-dropdown" id="countryDropdown2" style="display:none"></div>
+                        <div class="country-dropdown" id="countryDropdown2"></div>
 
                         <!-- RIGHT: phone input (number span inside) -->
                         <div class="phone-field">
@@ -1004,9 +990,11 @@
 
         </div>
     </div>
-    <script defer src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script defer src="./js/phoneFormatter.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script defer src="./js/modalFormatter.js"></script>
     <script defer src="./js/app.js"></script>
+    <script defer src="./js/modal.js"></script>
 </body>
 
 </html>
