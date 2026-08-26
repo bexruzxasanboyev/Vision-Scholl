@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vision Scholl</title>
     <style>
-      *, *::before, *::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{font-family:Gilroy, sans-serif}html, body{overflow-x:hidden}.header-wrap{padding:10px 10px 51px 10px}.container{max-width:1240px !important;margin:0 auto;padding:0 10px}.header{width:100% !important;height:var(--header-h);background:#4EACFF;border:1.5px solid var(--blue-border);border-radius:26px;display:flex;align-items:center;justify-content:space-between;padding:15px 20px 15px 14px !important;position:relative;gap:0}.logo img{max-width:clamp(115px, 36vw, 130px);width:100%;height:auto}.header__top{display:flex;align-items:center;gap:23px}.nav{flex:1;display:flex;align-items:center;justify-content:center;gap:clamp(18px, 3.2vw, 46px);list-style:none}.nav a{font-size:clamp(13px, 1.1vw, 15.5px);font-weight:700;color:#fff;text-decoration:none;white-space:nowrap;font-weight:600;font-size:15px;line-height:140%;text-align:center;letter-spacing:0.01em;position:relative;padding-bottom:2px;transition:opacity 0.2s ease}.nav a::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:2px;background:rgba(255, 255, 255, 0.912);border-radius:2px;transition:width 0.25s ease}.text{font-weight:400;font-size:14px;line-height:140%;color:white}.nav a:hover{opacity:0.85}.nav a:hover::after{width:100%}.btn-aloqa{color:#303030;text-decoration:none;border:none;cursor:pointer;border-radius:21px;background:linear-gradient(90deg, #2BF88F 0%, #00FF7C 49.04%, #2BF88F 100%);padding:12px 0 13px 0;max-width:122px;width:100%;text-align:center;font-weight:600;font-size:15px;line-height:100%;transition:filter 0.22s ease, transform 0.18s ease}.btn-aloqa:hover{filter:brightness(1.08);transform:translateY(-1px)}.btn-aloqa:active{transform:translateY(0);filter:brightness(0.97)}.hamburger{display:none;flex-direction:column;justify-content:center;align-items:center;gap:5px;width:36px;height:36px;background:rgba(255, 255, 255, 0.15);border:none;border-radius:8px;cursor:pointer;flex-shrink:0;margin-left:auto;padding:6px}.hamburger span{display:block;width:20px;height:2.2px;background:#fff;border-radius:2px;transition:all 0.28s ease;transform-origin:center}.hamburger.open span:nth-child(1){transform:translateY(7.2px) rotate(45deg)}.hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}.hamburger.open span:nth-child(3){transform:translateY(-7.2px) rotate(-45deg)}.navOverlay{position:fixed;inset:0;background:rgba(7, 24, 43, .45);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);opacity:0;pointer-events:none;transition:opacity .25s ease;z-index:999}.navOverlay.is-open{opacity:1;pointer-events:auto}.mobileNav{position:fixed;top:0;right:0;height:100dvh;width:min(320px, 88vw);background:#fff;border-top-left-radius:22px;border-bottom-left-radius:22px;box-shadow:-20px 0 50px rgba(0, 0, 0, .18);transform:translateX(110%);transition:transform .28s ease;z-index:1000;display:flex;flex-direction:column;padding:14px 10px 16px}.mobileNav.is-open{transform:translateX(0)}.mobileNav__top{display:flex;align-items:center;justify-content:space-between;padding:6px 6px 10px;border-bottom:1px solid rgba(41, 168, 232, .12);background-color:#4EACFF;border-radius:20px}.mobileNav__close{width:40px;height:40px;border:0;background:#EEF6FD;border-radius:12px;color:#29A8E8;display:grid;place-items:center;cursor:pointer;transition:background .15s ease;flex-shrink:0}.mobileNav__close:hover{background:#daeef9}.mobileNav__list{list-style:none;padding:12px 4px;display:grid;gap:8px;overflow:auto}.mobileNav__link{display:flex;align-items:center;justify-content:space-between;text-decoration:none;padding:13px 14px;border-radius:14px;background:#F0F8FE;color:#1a3a5c;font-weight:700;font-size:14px;transition:transform .08s ease, background .15s ease}.mobileNav__link:hover{background:#daeef9}.mobileNav__link:active{transform:scale(.98)}.mobileNav__link::after{content:'›';font-size:18px;color:#29A8E8;font-weight:400}.mobileNav__bottom{margin-top:auto;padding-top:10px;display:grid;gap:10px}.mobileNav__btn{width:100%;padding:16px 0;border:none;cursor:pointer;border-radius:50px;font-weight:800;font-size:15px;color:#fff;background:linear-gradient(90deg, #29A8E8 0%, #3BBEF5 100%);box-shadow:0 4px 0 #1a85c2;transition:filter .18s ease, transform .15s ease}.mobileNav__btn:hover{filter:brightness(1.07)}.mobileNav__btn:active{transform:translateY(2px);box-shadow:0 2px 0 #1a85c2}.mobileNav__cta{text-decoration:none;text-align:center;padding:14px 10px;border-radius:16px;background:rgba(41, 168, 232, .08);color:#1a3a5c;font-weight:600;font-size:13px;transition:background .15s ease}.mobileNav__cta:hover{background:rgba(41, 168, 232, .14)}body.nav-open{overflow:hidden}.hero{align-items:center;gap:40px;padding-bottom:139px;position:relative}.hero__container{max-width:1150px;margin:0 auto;padding:0 10px}.hero__left{display:flex;flex-direction:column;gap:28px;position:relative}.hero__title{font-weight:700;font-size:clamp(22px, 7vw, 42px);line-height:120%;margin-bottom:36px}.hero__card{border:1px solid #02A5FF;max-width:450px;width:100%;border-radius:26px;background-color:#4EACFF;padding:33px 30px 36px 30px;display:flex;flex-direction:column;gap:13.5px}.hero__input{width:100%;padding:16px 0 15px 26px;border-radius:14px;border:none;outline:none;background:#fff;font-weight:600;font-size:17px;line-height:160%}.hero__input::placeholder{color:#190E41}.hero__input:focus{box-shadow:0 0 0 3px rgba(59, 190, 245, .35)}.hero__btn{width:100%;padding:15px 0 14px 0;border:none;border-radius:12px;background:linear-gradient(90deg, #2BF88F 0%, #00FF7C 49.04%, #2BF88F 100%);box-shadow:0px 6px 0px 0px #1AA960;color:#303030;font-weight:600;font-size:18px;line-height:160%;margin-bottom:8px;cursor:pointer;transition:filter .18s ease, transform .15s ease}.hero__btn:hover{filter:brightness(1.06)}.hero__btn:active{transform:translateY(3px);box-shadow:0 1px 0 #1da038}.hero__legal{font-weight:500;font-size:clamp(8.5px, 2.7vw, 12px);line-height:120%;text-align:center;color:white}.hero__legal a{text-underline-offset:2px;color:white}.hero__right{position:relative}.hero__right img{object-fit:cover;max-width:clamp(300px, 228vw, 592px);width:100%;right:0;top:-500px;z-index:3;position:absolute;height:auto}.shaddow{box-shadow:0px 0px 150px 0px #65B6FF80;width:100%;max-width:clamp(220px, 35vw, 517px);height:clamp(220px, 35vw, 517px);border-radius:100%;position:absolute;right:20px;top:-440px}.hero__right-info{max-width:227px;width:100%;border-radius:8px;transform:rotate(-14.5deg);white-space:nowrap;height:39px;background:linear-gradient(90deg, #2BF88F 0%, #00FF7C 49.04%, #2BF88F 100%);box-shadow:5.51px 4px 0px 0px #3495EC;padding:4px 10px;display:flex;align-items:center;justify-content:center;position:absolute;right:0;z-index:5;bottom:28px}.hero__right-info p{color:#303030;font-weight:700;font-size:clamp(17px, 5.3vw, 22px);line-height:100%}.gradinet{background-color:white;width:592px;height:258px;filter:blur(50px);position:absolute;top:-75px;z-index:4;right:0}@media (max-width:1024px){.nav{gap:clamp(12px, 2.5vw, 28px)}.btn-aloqa{padding:10px 22px}.gradinet{top:240px}.shaddow{top:50px;left:50%;transform:translateX(-50%)}}@media (max-width:1000px){.hero__right img{margin:0 auto;transform:translateX(-50%);left:50%;top:0}.hero__right-info{max-width:200px;padding:3px 8px}}@media (max-width:860px){.hero{grid-template-columns:1fr;gap:48px}.hero__right{min-height:360px;order:-1}.hero__card{max-width:100%}}@media (max-width:480px){.hero__right{min-height:300px}.header-wrap{padding-bottom:25px}.hero__left{gap:5px}.hero__card{padding:22px 20px 20px 20px}.hero__input{font-size:16px;padding:14px 0 14px 20px}.hero__btn{font-size:17px}}@media (max-width:767px){.nav{display:none}.btn-aloqa.desktop-btn{display:none}.hamburger{display:flex}.header{border-radius:28px;padding:4px 14px}}@media (max-width:360px){.header__top{gap:10px}.hero__right-info{max-width:180px;padding:3px 5px}}
+      *, *::before, *::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{font-family:Gilroy, sans-serif}html, body{overflow-x:hidden}.header-wrap{padding:10px 10px 51px 10px}.container{max-width:1240px !important;margin:0 auto;padding:0 10px}.header{width:100% !important;height:var(--header-h);background:#4EACFF;border:1.5px solid var(--blue-border);border-radius:26px;display:flex;align-items:center;justify-content:space-between;padding:15px 20px 15px 14px !important;position:relative;gap:0}.logo img{max-width:clamp(115px, 36vw, 130px);width:100%;height:auto}.header__top{display:flex;align-items:center;gap:23px}.nav{flex:1;display:flex;align-items:center;justify-content:center;gap:clamp(18px, 3.2vw, 46px);list-style:none}.nav a{font-size:clamp(13px, 1.1vw, 15.5px);font-weight:700;color:#fff;text-decoration:none;white-space:nowrap;font-weight:600;font-size:15px;line-height:140%;text-align:center;letter-spacing:0.01em;position:relative;padding-bottom:2px;transition:opacity 0.2s ease}.nav a::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:2px;background:rgba(255, 255, 255, 0.912);border-radius:2px;transition:width 0.25s ease}.text{font-weight:400;font-size:14px;line-height:140%;color:white}.nav a:hover{opacity:0.85}.nav a:hover::after{width:100%}.btn-aloqa{color:#303030;text-decoration:none;border:none;cursor:pointer;border-radius:21px;background:linear-gradient(90deg, #2BF88F 0%, #00FF7C 49.04%, #2BF88F 100%);padding:12px 0 13px 0;max-width:122px;width:100%;text-align:center;font-weight:600;font-size:15px;line-height:100%;transition:filter 0.22s ease, transform 0.18s ease}.btn-aloqa:hover{filter:brightness(1.08);transform:translateY(-1px)}.btn-aloqa:active{transform:translateY(0);filter:brightness(0.97)}.hamburger{display:none;flex-direction:column;justify-content:center;align-items:center;gap:5px;width:36px;height:36px;background:rgba(255, 255, 255, 0.15);border:none;border-radius:8px;cursor:pointer;flex-shrink:0;margin-left:auto;padding:6px}.hamburger span{display:block;width:20px;height:2.2px;background:#fff;border-radius:2px;transition:all 0.28s ease;transform-origin:center}.hamburger.open span:nth-child(1){transform:translateY(7.2px) rotate(45deg)}.hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}.hamburger.open span:nth-child(3){transform:translateY(-7.2px) rotate(-45deg)}.navOverlay{position:fixed;inset:0;background:rgba(7, 24, 43, .45);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);opacity:0;pointer-events:none;transition:opacity .25s ease;z-index:999}.navOverlay.is-open{opacity:1;pointer-events:auto}.mobileNav{position:fixed;top:0;right:0;height:100dvh;width:min(320px, 88vw);background:#fff;border-top-left-radius:22px;border-bottom-left-radius:22px;box-shadow:-20px 0 50px rgba(0, 0, 0, .18);transform:translateX(110%);transition:transform .28s ease;z-index:1000;display:flex;flex-direction:column;padding:14px 10px 16px}.mobileNav.is-open{transform:translateX(0)}.mobileNav__top{display:flex;align-items:center;justify-content:space-between;padding:6px 6px 10px;border-bottom:1px solid rgba(41, 168, 232, .12);background-color:#4EACFF;border-radius:20px}.mobileNav__close{width:40px;height:40px;border:0;background:#EEF6FD;border-radius:12px;color:#29A8E8;display:grid;place-items:center;cursor:pointer;transition:background .15s ease;flex-shrink:0}.mobileNav__close:hover{background:#daeef9}.mobileNav__list{list-style:none;padding:12px 4px;display:grid;gap:8px;overflow:auto}.mobileNav__link{display:flex;align-items:center;justify-content:space-between;text-decoration:none;padding:13px 14px;border-radius:14px;background:#F0F8FE;color:#1a3a5c;font-weight:700;font-size:14px;transition:transform .08s ease, background .15s ease}.mobileNav__link:hover{background:#daeef9}.mobileNav__link:active{transform:scale(.98)}.mobileNav__link::after{content:'›';font-size:18px;color:#29A8E8;font-weight:400}.mobileNav__bottom{margin-top:auto;padding-top:10px;display:grid;gap:10px}.mobileNav__btn{width:100%;padding:16px 0;border:none;cursor:pointer;border-radius:50px;font-weight:800;font-size:15px;color:#fff;background:linear-gradient(90deg, #29A8E8 0%, #3BBEF5 100%);box-shadow:0 4px 0 #1a85c2;transition:filter .18s ease, transform .15s ease}.mobileNav__btn:hover{filter:brightness(1.07)}.mobileNav__btn:active{transform:translateY(2px);box-shadow:0 2px 0 #1a85c2}.mobileNav__cta{text-decoration:none;text-align:center;padding:14px 10px;border-radius:16px;background:rgba(41, 168, 232, .08);color:#1a3a5c;font-weight:600;font-size:13px;transition:background .15s ease}.mobileNav__cta:hover{background:rgba(41, 168, 232, .14)}body.nav-open{overflow:hidden}.hero{align-items:center;gap:40px;padding-bottom:139px;position:relative}.hero__container{max-width:1150px;margin:0 auto;padding:0 10px}.hero__left{display:flex;flex-direction:column;gap:28px;position:relative}.hero__title{font-weight:700;font-size:clamp(22px, 7vw, 42px);line-height:120%;margin-bottom:36px}.hero__card{border:1px solid #02A5FF;max-width:450px;width:100%;border-radius:26px;background-color:#4EACFF;padding:33px 30px 36px 30px;display:flex;flex-direction:column;gap:13.5px}.hero__input{width:100%;padding:16px 0 15px 26px;border-radius:14px;border:none;outline:none;background:#fff;font-weight:600;font-size:17px;line-height:160%}.hero__input::placeholder{color:#190E41}.hero__input:focus{box-shadow:0 0 0 3px rgba(59, 190, 245, .35)}.hero__btn{width:100%;padding:15px 0 14px 0;border:none;border-radius:12px;background:linear-gradient(90deg, #2BF88F 0%, #00FF7C 49.04%, #2BF88F 100%);box-shadow:0px 6px 0px 0px #1AA960;color:#303030;font-weight:600;font-size:18px;line-height:160%;margin-bottom:8px;cursor:pointer;transition:filter .18s ease, transform .15s ease}.hero__btn:hover{filter:brightness(1.06)}.hero__btn:active{transform:translateY(3px);box-shadow:0 1px 0 #1da038}.hero__legal{font-weight:500;font-size:clamp(8.5px, 2.7vw, 12px);line-height:120%;text-align:center;color:white}.hero__legal a{text-underline-offset:2px;color:white}.hero__right{position:relative}.hero__right img{object-fit:cover;max-width:clamp(300px, 228vw, 592px);width:100%;right:0;top:-500px;z-index:3;position:absolute;height:auto}.shaddow{box-shadow:0px 0px 150px 0px #65B6FF80;width:100%;max-width:clamp(220px, 35vw, 517px);height:clamp(220px, 35vw, 517px);border-radius:100%;position:absolute;right:20px;top:-440px}.hero__right-info{max-width:227px;width:100%;border-radius:8px;transform:rotate(-14.5deg);white-space:nowrap;height:39px;background:linear-gradient(90deg, #2BF88F 0%, #00FF7C 49.04%, #2BF88F 100%);box-shadow:5.51px 4px 0px 0px #3495EC;padding:4px 10px;display:flex;align-items:center;justify-content:center;position:absolute;right:0;z-index:5;bottom:28px}.hero__right-info p{color:#303030;font-weight:700;font-size:clamp(17px, 5.3vw, 22px);line-height:100%}.gradinet{background-color:white;width:592px;height:258px;filter:blur(50px);position:absolute;top:-75px;z-index:4;right:0}@media (max-width:1024px){.nav{gap:clamp(12px, 2.5vw, 28px)}.btn-aloqa{padding:10px 22px}.gradinet{top:240px}.shaddow{top:50px;left:50%;transform:translateX(-50%)}}@media (max-width:1000px){.hero__right img{margin:0 auto;transform:translateX(-50%);left:50%;top:0}.hero__right-info{max-width:200px;padding:3px 8px}}@media (max-width:860px){.hero{grid-template-columns:1fr;gap:48px}.hero__right{min-height:360px;order:-1}.hero__card{max-width:100%}}@media (max-width:480px){.hero__right{min-height:300px}.header-wrap{padding-bottom:25px}.hero__left{gap:5px}.hero__card{padding:22px 20px 20px 20px}.hero__input{font-size:16px;padding:14px 0 14px 20px}.hero__btn{font-size:17px}}@media (max-width:767px){.nav{display:none}.btn-aloqa.desktop-btn{display:none}.hamburger{display:flex}.header{border-radius:28px;padding:4px 14px}.hero{padding-bottom:40px}}@media (max-width:360px){.header__top{gap:10px}.hero__right-info{max-width:180px;padding:3px 5px}}
     </style>
 
     <link rel="stylesheet" href="./css/main.css" media="print" onload="this.media='all'" />
@@ -688,8 +688,272 @@
                     </button>
 
                     <div class="work__slide-wrap">
-                        <div class="work__slide">
-                            <span class="work__slide-num" id="slideNum">1 / 5</span>
+                        <div class="work__track" id="workTrack">
+                            <div class="work__slide work__slide--filled">
+                                <article class="module-card">
+                                    <header class="module-card__head">
+                                        <span class="module-card__icon" aria-hidden="true">
+                                            <svg viewBox="0 0 32 32" fill="none">
+                                                <path d="M8.2 16.2a7.8 7.8 0 0 1 15.6 0" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/>
+                                                <rect x="5.2" y="16" width="5.4" height="8.8" rx="2.2" fill="#fff"/>
+                                                <rect x="21.4" y="16" width="5.4" height="8.8" rx="2.2" fill="#fff"/>
+                                                <path d="M27.6 13.2c1.5 1.7 1.5 4.7 0 6.4M4.4 13.2c-1.5 1.7-1.5 4.7 0 6.4" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/>
+                                            </svg>
+                                        </span>
+                                        <h3 class="module-card__title">LISTENING</h3>
+                                    </header>
+                                    <ul class="module-card__list">
+                                        <li class="module-card__row">
+                                            <div class="module-card__left">
+                                                <span class="module-card__dot"></span>
+                                                <div class="module-card__part">
+                                                    <span class="module-card__part-n">Part 1:</span>
+                                                    <span class="module-card__part-t">Gap-fill</span>
+                                                </div>
+                                            </div>
+                                            <span class="module-card__chev" aria-hidden="true"></span>
+                                            <p class="module-card__desc">-50% javoblarni savollarsiz “predict” qilish.</p>
+                                        </li>
+                                        <li class="module-card__row">
+                                            <div class="module-card__left">
+                                                <span class="module-card__dot"></span>
+                                                <div class="module-card__part">
+                                                    <span class="module-card__part-n">Part 2:</span>
+                                                    <span class="module-card__part-t">Maps</span>
+                                                </div>
+                                            </div>
+                                            <span class="module-card__chev" aria-hidden="true"></span>
+                                            <p class="module-card__desc">Namyok bilan ishlash</p>
+                                        </li>
+                                        <li class="module-card__row">
+                                            <div class="module-card__left">
+                                                <span class="module-card__dot"></span>
+                                                <div class="module-card__part">
+                                                    <span class="module-card__part-n">Part 3:</span>
+                                                    <span class="module-card__part-t">MCQ</span>
+                                                </div>
+                                            </div>
+                                            <span class="module-card__chev" aria-hidden="true"></span>
+                                            <p class="module-card__desc">“Option”larsiz 10/10ta topish.</p>
+                                        </li>
+                                        <li class="module-card__row">
+                                            <div class="module-card__left">
+                                                <span class="module-card__dot"></span>
+                                                <div class="module-card__part">
+                                                    <span class="module-card__part-n">Part 4:</span>
+                                                    <span class="module-card__part-t">Gap-fill</span>
+                                                </div>
+                                            </div>
+                                            <span class="module-card__chev" aria-hidden="true"></span>
+                                            <p class="module-card__desc">Audioni 20%i orqali 100% javobni topish</p>
+                                        </li>
+                                    </ul>
+                                </article>
+                            </div>
+                            <div class="work__slide work__slide--filled">
+                                <article class="module-card">
+                                    <header class="module-card__head">
+                                        <span class="module-card__icon" aria-hidden="true">
+                                            <svg viewBox="0 0 32 32" fill="none">
+                                                <path d="M6.5 8h8.2a4 4 0 0 1 4 4V26H10.2A3.7 3.7 0 0 0 6.5 29.7V8z" stroke="#fff" stroke-width="2" stroke-linejoin="round"/>
+                                                <path d="M25.5 8h-8.2a4 4 0 0 0-4 4V26h8.5A3.7 3.7 0 0 1 25.5 29.7V8z" stroke="#fff" stroke-width="2" stroke-linejoin="round"/>
+                                            </svg>
+                                        </span>
+                                        <h3 class="module-card__title">READING</h3>
+                                    </header>
+                                    <ul class="module-card__list">
+                                        <li class="module-card__row">
+                                            <div class="module-card__left">
+                                                <span class="module-card__dot"></span>
+                                                <div class="module-card__part">
+                                                    <span class="module-card__part-n">Level 1:</span>
+                                                    <ul class="module-card__subs">
+                                                        <li>Tr/F/N.G</li>
+                                                        <li>Multiple Choice</li>
+                                                        <li>Heading</li>
+                                                        <li>Summary / Gap-fill</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <span class="module-card__chev" aria-hidden="true"></span>
+                                            <ul class="module-card__tips">
+                                                <li>Urg'uni aniqlash / javobni oldindan bilish</li>
+                                                <li>Optionlarsiz chalg'imastan yechish</li>
+                                                <li>Paragrafning 2-3ta gapi bilan yechish</li>
+                                                <li>Matnni tushunmastan lokatsiya topish</li>
+                                            </ul>
+                                        </li>
+                                        <li class="module-card__row">
+                                            <div class="module-card__left">
+                                                <span class="module-card__dot"></span>
+                                                <div class="module-card__part">
+                                                    <span class="module-card__part-n">Level 2</span>
+                                                    <ul class="module-card__subs">
+                                                        <li>Passage 1</li>
+                                                        <li>Passage 2</li>
+                                                        <li>Passage 3</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <span class="module-card__chev" aria-hidden="true"></span>
+                                            <ul class="module-card__tips">
+                                                <li>Javoblarni his qilish (tushunmasa ham)</li>
+                                            </ul>
+                                        </li>
+                                        <li class="module-card__row">
+                                            <div class="module-card__left">
+                                                <span class="module-card__dot"></span>
+                                                <div class="module-card__part">
+                                                    <span class="module-card__part-n">Level 3</span>
+                                                    <ul class="module-card__subs">
+                                                        <li>40/40 in 40 minutes</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <span class="module-card__chev" aria-hidden="true"></span>
+                                            <ul class="module-card__tips">
+                                                <li>1 daqiqada 1ta savolga javob berish</li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </article>
+                            </div>
+                            <div class="work__slide work__slide--filled">
+                                <article class="module-card">
+                                    <header class="module-card__head">
+                                        <span class="module-card__icon" aria-hidden="true">
+                                            <svg viewBox="0 0 32 32" fill="none">
+                                                <path d="M19.2 6.2l6.6 6.6L11 27.6H4.4v-6.6L19.2 6.2z" stroke="#fff" stroke-width="2" stroke-linejoin="round"/>
+                                                <path d="M16.8 8.6l6.6 6.6" stroke="#fff" stroke-width="2"/>
+                                                <path d="M4.4 27.6h23.2" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+                                            </svg>
+                                        </span>
+                                        <h3 class="module-card__title">WRITING</h3>
+                                    </header>
+                                    <ul class="module-card__list">
+                                        <li class="module-card__row">
+                                            <div class="module-card__left">
+                                                <span class="module-card__dot"></span>
+                                                <div class="module-card__part">
+                                                    <span class="module-card__part-n">Ingredients</span>
+                                                    <ul class="module-card__subs">
+                                                        <li>Introductions</li>
+                                                        <li>Body Paragraphs</li>
+                                                        <li>Conclusions</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <span class="module-card__chev" aria-hidden="true"></span>
+                                            <ul class="module-card__tips">
+                                                <li>Paraphrasening 4 xil turi</li>
+                                                <li>G'oya kelmasa ham yoza olish</li>
+                                                <li>Crazy analysis: Inshoni his qilish</li>
+                                            </ul>
+                                        </li>
+                                        <li class="module-card__row">
+                                            <div class="module-card__left">
+                                                <span class="module-card__dot"></span>
+                                                <div class="module-card__part">
+                                                    <span class="module-card__part-n">Recipe (bonus)</span>
+                                                    <ul class="module-card__subs">
+                                                        <li>Task Response</li>
+                                                        <li>Coherence &amp; Cohesion</li>
+                                                        <li>Lexical Resource</li>
+                                                        <li>Grammatical Range &amp; Accuracy</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <span class="module-card__chev" aria-hidden="true"></span>
+                                            <ul class="module-card__tips">
+                                                <li>5,0 / 6,0 / 7,0 insholarning farqi</li>
+                                            </ul>
+                                        </li>
+                                        <li class="module-card__row">
+                                            <div class="module-card__left">
+                                                <span class="module-card__dot"></span>
+                                                <div class="module-card__part">
+                                                    <span class="module-card__part-n">Cooking</span>
+                                                    <ul class="module-card__subs">
+                                                        <li>Advantage / Disadvantage</li>
+                                                        <li>Agree/Disagree</li>
+                                                        <li>Discussion</li>
+                                                        <li>Problem/Solution</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <span class="module-card__chev" aria-hidden="true"></span>
+                                            <ul class="module-card__tips">
+                                                <li>4,5-6,0lik g'oyalarni 7,0+ga oshirish</li>
+                                                <li>20 daqiqada insho yozish</li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </article>
+                            </div>
+                            <div class="work__slide work__slide--filled">
+                                <article class="module-card">
+                                    <header class="module-card__head">
+                                        <span class="module-card__icon" aria-hidden="true">
+                                            <svg viewBox="0 0 32 32" fill="none">
+                                                <rect x="12" y="5" width="8" height="14" rx="4" stroke="#fff" stroke-width="2"/>
+                                                <path d="M8 16a8 8 0 0 0 16 0M16 24v3.5M11 27.5h10" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+                                            </svg>
+                                        </span>
+                                        <h3 class="module-card__title">SPEAKING</h3>
+                                    </header>
+                                    <ul class="module-card__list">
+                                        <li class="module-card__row">
+                                            <div class="module-card__left">
+                                                <span class="module-card__dot"></span>
+                                                <div class="module-card__part">
+                                                    <span class="module-card__part-n">Part 1:</span>
+                                                    <ul class="module-card__subs">
+                                                        <li>5 types of answers,</li>
+                                                        <li>Fluency, Pronunciation</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <span class="module-card__chev" aria-hidden="true"></span>
+                                            <ul class="module-card__tips">
+                                                <li>Ravon gapirish</li>
+                                                <li>“Tone”ni to'g'irlash</li>
+                                            </ul>
+                                        </li>
+                                        <li class="module-card__row">
+                                            <div class="module-card__left">
+                                                <span class="module-card__dot"></span>
+                                                <div class="module-card__part">
+                                                    <span class="module-card__part-n">Part 2:</span>
+                                                    <ul class="module-card__subs">
+                                                        <li>Storytelling, “Segmenting”</li>
+                                                        <li>technique, Lexical Resource</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <span class="module-card__chev" aria-hidden="true"></span>
+                                            <ul class="module-card__tips">
+                                                <li>2 daqiqa to'htovsiz gapirish</li>
+                                            </ul>
+                                        </li>
+                                        <li class="module-card__row">
+                                            <div class="module-card__left">
+                                                <span class="module-card__dot"></span>
+                                                <div class="module-card__part">
+                                                    <span class="module-card__part-n">Part 3:</span>
+                                                    <ul class="module-card__subs">
+                                                        <li>“Listing” technique, Gr.</li>
+                                                        <li>Range &amp; Accuracy.</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <span class="module-card__chev" aria-hidden="true"></span>
+                                            <ul class="module-card__tips">
+                                                <li>Qiyin savollarga g'oyani toppish va yoritib berish</li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </article>
+                            </div>
                         </div>
                     </div>
 
@@ -706,7 +970,7 @@
     </section>
 
     <!-- ══ PRICE ══ -->
-    <section class="price">
+    <section class="price" id="price">
         <div class="container">
             <h2 class="price__title">Kurs narxlari</h2>
 
@@ -719,7 +983,7 @@
                     <div class="price__info price__info--green">
                         <h3>Elementary Foundation</h3>
                         <p>Bazani 0 dan mustahkamlashni <br> istaganlar uchun</p>
-                        <button class="price__cta webinar-cta">ELEMENTARYDA O‘QIMOQCHIMAN</button>
+                        <button class="price__cta webinar-cta" data-tarif="elementary">ELEMENTARYDA O‘QIMOQCHIMAN</button>
                     </div>
                 </div>
 
@@ -730,7 +994,7 @@
                     <div class="price__info price__info--blue">
                         <h3>IELTS Vision — Nazoratsiz</h3>
                         <p>O'z tezligida o'rganishni istaganlar uchun</p>
-                        <button class="price__cta webinar-cta">NAZORATSIZ O‘RGANMOQCHIMAN</button>
+                        <button class="price__cta webinar-cta" data-tarif="nazoratsiz">NAZORATSIZ O‘RGANMOQCHIMAN</button>
                     </div>
                 </div>
 
@@ -757,7 +1021,7 @@
                         </div>
                         <h3>IELTS Vision — Nazoratli</h3>
                         <p>Kuniga 4–5 soat ajratishga va ustoz <br> nazoratida tez natija olishga tayyorlar uchun</p>
-                        <button class="price__cta webinar-cta">USTOZ NAZORATIDA O‘QIMOQCHIMAN</button>
+                        <button class="price__cta webinar-cta" data-tarif="nazoratli">USTOZ NAZORATIDA O‘QIMOQCHIMAN</button>
                     </div>
                 </div>
 
@@ -811,9 +1075,7 @@
                         </div>
                     </button>
                     <div class="faq__answer">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis porro molestias magnam
-                            odio. Quia dolor fuga ducimus iusto nesciunt cum architecto. Expedita minima cupiditate quod
-                            architecto, exercitationem quaerat nulla minus.</p>
+                        <p>Har bir o‘quvchi bir xil darajada emas. Baza hali shakllanmagan bo‘lsa — Elementary Foundation. IELTS 4.5 yoki 7.0 bo‘lishidan qat’i nazar, mavjud ballni kamida 1.0 ga oshirmoqchi bo‘lsangiz — IELTS Vision.</p>
                     </div>
                 </div>
 
@@ -827,9 +1089,7 @@
                         </div>
                     </button>
                     <div class="faq__answer">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis porro molestias magnam
-                            odio. Quia dolor fuga ducimus iusto nesciunt cum architecto. Expedita minima cupiditate quod
-                            architecto, exercitationem quaerat nulla minus.</p>
+                        <p>Grammar asoslari zaif, speaking’da oddiy gap tuzish qiyin, vocabulary kam yoki IELTS 4.5 ham chiqmayotgan bo‘lsa. Ingliz tilini boshlang‘ich darajada bilsangiz va IELTS boshlashga hali erta deb o‘ylasangiz, avval Elementary Foundation kerak.</p>
 
                     </div>
                 </div>
@@ -844,9 +1104,7 @@
                         </div>
                     </button>
                     <div class="faq__answer">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis porro molestias magnam
-                            odio. Quia dolor fuga ducimus iusto nesciunt cum architecto. Expedita minima cupiditate quod
-                            architecto, exercitationem quaerat nulla minus.</p>
+                        <p>Elementary Foundation 3–4 oyda IELTS Visionga tayyorlaydi. Agar baza yetarli bo‘lsa, to‘g‘ridan-to‘g‘ri IELTS Visionga o‘tasiz: 2 oyda ballingizni kamida 1.0 ga oshirish shu kursning maqsadi.</p>
 
                     </div>
                 </div>
@@ -861,9 +1119,7 @@
                         </div>
                     </button>
                     <div class="faq__answer">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis porro molestias magnam
-                            odio. Quia dolor fuga ducimus iusto nesciunt cum architecto. Expedita minima cupiditate quod
-                            architecto, exercitationem quaerat nulla minus.</p>
+                        <p>IELTS Vision 2 oy davom etadi. Elementary Foundation esa 3–4 oy: shu muddatda baza mustahkamlanadi va keyin IELTS Visionga o‘tasiz.</p>
 
                     </div>
                 </div>
@@ -878,9 +1134,7 @@
                         </div>
                     </button>
                     <div class="faq__answer">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis porro molestias magnam
-                            odio. Quia dolor fuga ducimus iusto nesciunt cum architecto. Expedita minima cupiditate quod
-                            architecto, exercitationem quaerat nulla minus.</p>
+                        <p>Nazoratli IELTS Visionda kuniga 4–5 soat ajratish kutiladi. Nazoratsiz formatda o‘z tezligingizda o‘qiysiz. Vazifa topshirilmasa, nazoratli kursdan chetlatiladi.</p>
 
                     </div>
                 </div>
@@ -895,9 +1149,7 @@
                         </div>
                     </button>
                     <div class="faq__answer">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis porro molestias magnam
-                            odio. Quia dolor fuga ducimus iusto nesciunt cum architecto. Expedita minima cupiditate quod
-                            architecto, exercitationem quaerat nulla minus.</p>
+                        <p>Ha. IELTS Visionni Shoxruxbek Olimov o‘zi ishlab chiqqan: IELTS 8.5, CELTA va 7 yillik tajriba. Undan shaxsan dars olasiz — 40 ta videodarslik va 24 ta online jonli dars.</p>
                     </div>
                 </div>
 

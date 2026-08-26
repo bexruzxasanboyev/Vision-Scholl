@@ -5,7 +5,7 @@ async function sendFormData() {
   const data = JSON.parse(rawData);
   
   // Script URL (Yangi deploy qilingan URLni qo'ying)
-  const scriptURL = "https://script.google.com/macros/s/AKfycbxQfp0V3m1J8vmPRF0kTNVJyCY0UiFGHHlscHKo24-6BOqjqp4FsT8zudfR_1jKgP8g/exec";
+  const scriptURL = "https://script.google.com/macros/s/AKfycby33DyRvFN7pzMs3ToT3V9miaj1qpURrB7QGdN88NYowERQM01oL-JjUXaeo4KX2gn8/exec";
 
   // URLSearchParams ma'lumotlarni to'g'ri formatlab beradi
   const params = new URLSearchParams();
@@ -13,6 +13,7 @@ async function sendFormData() {
   params.append("Ism", data.Ism || "Noma'lum");
   params.append("Telefon raqam", data.TelefonRaqam || "Noma'lum");
   params.append("Royhatdan o'tgan vaqti", data.SanaSoat || new Date().toLocaleString());
+  params.append("Tarif", data.Tarif || "forma");
 
   try {
     // POST so'rovi
